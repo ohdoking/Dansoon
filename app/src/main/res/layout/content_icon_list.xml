@@ -12,4 +12,11 @@
     tools:context="com.ohdoking.dansoondiary.activity.IconListActivity"
     tools:showIn="@layout/activity_icon_list">
 
+    <GridView
+        android:id="@+id/iconGridView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </GridView>
+
 </RelativeLayout>
