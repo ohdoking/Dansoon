@@ -18,25 +18,25 @@
     android:layout_height="wrap_content">
     <TextView
         android:id="@+id/date"
-        android:layout_width="470px"
-        android:layout_height="70px"
+        android:layout_width="900px"
+        android:layout_height="200px"
         android:textSize="27.33sp"
         android:layout_marginTop="39px"
-        android:layout_marginBottom="16px"
+        android:layout_marginBottom="5px"
         android:layout_marginStart="15px"
-        android:layout_marginEnd="12px"
+
         android:textColor="#66c4b1"
         android:text="2016.2.27 화요일"
         />
     <TextView
         android:id="@+id/time"
-        android:layout_width="150px"
-        android:layout_height="70px"
+        android:layout_width="300px"
+        android:layout_height="150px"
         android:textSize="27.33sp"
         android:layout_marginTop="40px"
-        android:layout_marginBottom="16px"
-
-        android:layout_marginEnd="40px"
+        android:layout_marginBottom="5px"
+        android:layout_marginStart="40px"
+        android:layout_marginEnd="30px"
         android:textColor="#7a7a7a"
         android:text="9:00"/>
 </LinearLayout>
@@ -44,42 +44,42 @@
     android:orientation="horizontal"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginTop="30dp">
+    android:layout_marginTop="20dp">
     <ImageView
         android:id="@+id/image"
-        android:layout_width="136px"
-        android:layout_height="136px"
+        android:layout_width="300px"
+        android:layout_height="300px"
         android:layout_marginTop="74px"
         android:layout_marginBottom="68px"
-        android:layout_marginStart="15px"
-        android:layout_marginEnd="18px"
+        android:layout_marginStart="5px"
+        android:layout_marginEnd="20px"
         android:background="@mipmap/ic_launcher"/>
     <ImageView
         android:id="@+id/image2"
-        android:layout_width="136px"
-        android:layout_height="136px"
+        android:layout_width="300px"
+        android:layout_height="300px"
         android:layout_marginTop="74px"
         android:layout_marginBottom="68px"
-        android:layout_marginStart="18px"
-        android:layout_marginEnd="18px"
+        android:layout_marginStart="20px"
+        android:layout_marginEnd="20px"
         android:background="@mipmap/ic_launcher"/>
 
     <ImageView
         android:id="@+id/image3"
-        android:layout_width="136px"
-        android:layout_height="136px"
+        android:layout_width="300px"
+        android:layout_height="300px"
         android:layout_marginTop="74px"
         android:layout_marginBottom="68px"
-        android:layout_marginStart="18px"
-        android:layout_marginEnd="18px"
+        android:layout_marginStart="20px"
+        android:layout_marginEnd="20px"
         android:background="@mipmap/ic_launcher"/>
     <ImageView
         android:id="@+id/image4"
-        android:layout_width="136px"
-        android:layout_height="136px"
+        android:layout_width="300px"
+        android:layout_height="300px"
         android:layout_marginTop="74px"
         android:layout_marginBottom="68px"
-        android:layout_marginStart="18px"
+        android:layout_marginStart="20px"
         android:layout_marginEnd="39px"
         android:background="@mipmap/ic_launcher"/>
 </LinearLayout>
@@ -89,8 +89,8 @@
         android:layout_height="wrap_content"></TableLayout>
 
     <TextView
-        android:layout_width="642px"
-        android:layout_height="270px"
+        android:layout_width="1290px"
+        android:layout_height="600px"
         android:layout_marginTop="68px"
         android:layout_marginBottom="84px"
         android:layout_marginStart="15px"
@@ -98,11 +98,11 @@
         android:id="@+id/memo"
         android:text="회사 갔다가 책 읽고 집에 옴"
         android:textSize="20.67sp"
-        android:textColor="7a7a7a7a"
-        android:paddingStart="26px"
-        android:paddingEnd="26px"
-        android:paddingTop="30px"
-        android:paddingBottom="32px"
+
+        android:paddingStart="35px"
+        android:paddingEnd="35px"
+        android:paddingTop="35px"
+        android:paddingBottom="35px"
         android:background="@drawable/xml_border"
     />
 
