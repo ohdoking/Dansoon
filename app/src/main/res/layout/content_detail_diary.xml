@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,8 +8,104 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.ohdoking.dansoondiary.activity.DetailDiaryActivity"
-    tools:showIn="@layout/activity_detail_diary">
+    tools:showIn="@layout/activity_detail_diary"
+    android:weightSum="1">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="470px"
+        android:layout_height="70px"
+        android:textSize="27.33sp"
+        android:layout_marginTop="39px"
+        android:layout_marginBottom="16px"
+        android:layout_marginStart="15px"
+        android:layout_marginEnd="12px"
+        android:textColor="#66c4b1"
+        android:text="2016.2.27 화요일"
+        />
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="150px"
+        android:layout_height="70px"
+        android:textSize="27.33sp"
+        android:layout_marginTop="40px"
+        android:layout_marginBottom="16px"
 
-</RelativeLayout>
+        android:layout_marginEnd="40px"
+        android:textColor="#7a7a7a"
+        android:text="9:00"/>
+</LinearLayout>
+<LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="30dp">
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="136px"
+        android:layout_height="136px"
+        android:layout_marginTop="74px"
+        android:layout_marginBottom="68px"
+        android:layout_marginStart="15px"
+        android:layout_marginEnd="18px"
+        android:background="@mipmap/ic_launcher"/>
+    <ImageView
+        android:id="@+id/image2"
+        android:layout_width="136px"
+        android:layout_height="136px"
+        android:layout_marginTop="74px"
+        android:layout_marginBottom="68px"
+        android:layout_marginStart="18px"
+        android:layout_marginEnd="18px"
+        android:background="@mipmap/ic_launcher"/>
+
+    <ImageView
+        android:id="@+id/image3"
+        android:layout_width="136px"
+        android:layout_height="136px"
+        android:layout_marginTop="74px"
+        android:layout_marginBottom="68px"
+        android:layout_marginStart="18px"
+        android:layout_marginEnd="18px"
+        android:background="@mipmap/ic_launcher"/>
+    <ImageView
+        android:id="@+id/image4"
+        android:layout_width="136px"
+        android:layout_height="136px"
+        android:layout_marginTop="74px"
+        android:layout_marginBottom="68px"
+        android:layout_marginStart="18px"
+        android:layout_marginEnd="39px"
+        android:background="@mipmap/ic_launcher"/>
+</LinearLayout>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></TableLayout>
+
+    <TextView
+        android:layout_width="642px"
+        android:layout_height="270px"
+        android:layout_marginTop="68px"
+        android:layout_marginBottom="84px"
+        android:layout_marginStart="15px"
+        android:layout_marginEnd="39px"
+        android:id="@+id/memo"
+        android:text="회사 갔다가 책 읽고 집에 옴"
+        android:textSize="20.67sp"
+        android:textColor="7a7a7a7a"
+        android:paddingStart="26px"
+        android:paddingEnd="26px"
+        android:paddingTop="30px"
+        android:paddingBottom="32px"
+        android:background="@drawable/xml_border"
+    />
+
+   >
+
+</LinearLayout>
