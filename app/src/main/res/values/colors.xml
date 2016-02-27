@@ -6,4 +6,5 @@
 
     <color name="colorAppMain">#66c4b1</color>
     <color name="colorStatusbar">#4fb49c</color>
+    <color name="colorHY">#ffffff</color>
 </resources>
