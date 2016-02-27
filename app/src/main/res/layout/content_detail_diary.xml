@@ -98,7 +98,7 @@
         android:id="@+id/memo"
         android:text="회사 갔다가 책 읽고 집에 옴"
         android:textSize="20.67sp"
-        android:textColor="7a7a7a7a"
+        android:textColor="#7a7a7a"
         android:paddingStart="26px"
         android:paddingEnd="26px"
         android:paddingTop="30px"

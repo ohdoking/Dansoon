@@ -22,31 +22,30 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
-                <Button
-                    android:id="@+id/button"
-                    android:layout_width="40px"
-                    android:layout_height="40px"
-                    android:layout_marginStart="40px"
-                    android:layout_marginTop="35px"
-                    android:layout_marginBottom="36px"
-                    />
+                android:orientation="horizontal"
+                android:padding="35px"
+                android:weightSum="1">
+
+                <!-- This is a centered logo -->
+                <ImageView
+                    android:id="@+id/moveList"
+                    android:layout_gravity="center"
+                    android:src="@drawable/calendar_icon"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.1"
+                    android:layout_height="wrap_content"/>
+
                 <TextView
-                    android:layout_width="176px"
-                    android:layout_height="40px"
-                    android:text="하루보기"
-                    android:layout_marginStart="28px"
-                    android:layout_marginTop="18px"
-                    android:layout_marginBottom="36px"
-                    android:textColor="#ffffff"/>
-                <Button
-                    android:id="@+id/button2"
-                    android:layout_width="14px"
-                    android:layout_height="40px"
-                    android:layout_marginStart="370px"
-                    android:layout_marginTop="35px"
-                    android:layout_marginBottom="36px"
-                    android:layout_marginEnd="52px"/>
+                    android:layout_width="0dp"
+                    android:layout_weight="0.9"
+                    android:textSize="10pt"
+                    android:textStyle="bold"
+                    android:textAlignment="textStart"
+                    android:layout_marginLeft="10px"
+                    android:gravity="center_vertical"
+                    android:layout_height="fill_parent"
+                    android:text="@string/title_show_today"/>
+
             </LinearLayout>
             </android.support.v7.widget.Toolbar>
 
