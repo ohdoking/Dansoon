@@ -17,7 +17,38 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/colorAppMain"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            app:popupTheme="@style/AppTheme.PopupOverlay" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:padding="35px"
+                android:paddingStart="0px"
+                android:weightSum="1">
+
+                <!-- This is a centered logo -->
+                <ImageView
+                    android:id="@+id/moveList"
+                    android:layout_gravity="center"
+                    android:src="@drawable/back_icon"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.1"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.9"
+                    android:textSize="10pt"
+                    android:textStyle="bold"
+                    android:textAlignment="textStart"
+                    android:layout_marginLeft="10px"
+                    android:gravity="center_vertical"
+                    android:layout_height="fill_parent"
+                    android:text="@string/title_static"/>
+
+            </LinearLayout>
+            </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
 
