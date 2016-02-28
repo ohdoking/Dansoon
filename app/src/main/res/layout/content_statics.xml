@@ -10,12 +10,9 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.ohdoking.dansoondiary.activity.StaticsActivity"
-    tools:showIn="@layout/activity_statics">
+    tools:showIn="@layout/activity_statics"
+    android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
 
 
         <!--<LinearLayout
@@ -59,10 +56,103 @@
 
         </LinearLayout>-->
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/top3"
+                android:layout_width="match_parent"
+                android:layout_height="29dp"
+                android:textColor="#66c4b1"
+                android:textSize="20sp"
+                android:text="이달의 아이콘 탑 3"/>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="300px"
+                android:layout_height="300px"
+                android:layout_marginEnd="50px"
+                android:layout_marginStart="50px"
+                android:layout_marginTop="50px"
+                android:id="@+id/icon1"
+                android:background="@drawable/c"/>
+
+                <ImageView
+                 android:layout_width="300px"
+                 android:layout_height="300px"
+                 android:layout_marginStart="120px"
+                 android:layout_marginTop="50px"
+                 android:id="@+id/icon2"
+                 android:background="@drawable/b"/>
+
+                <ImageView
+                    android:layout_width="300px"
+                    android:layout_height="300px"
+                    android:layout_marginTop="50px"
+                    android:layout_marginEnd="50px"
+                    android:layout_marginStart="150px"
+                    android:id="@+id/icon3"
+                    android:background="@drawable/a"/>
+
+            </LinearLayout>
+            </LinearLayout>
+<LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="200px"
+        android:layout_height="150px"
+        android:text="1위"
+        android:textColor="#ffffff"
+        android:layout_marginStart="100px"
+        android:layout_marginTop="50px"
+        android:textSize="18sp"
+        android:paddingLeft="40px"
+        android:background="@drawable/radius"
+        />
+    <TextView
+        android:paddingLeft="45px"
+        android:layout_width="200px"
+        android:layout_height="150px"
+        android:layout_marginStart="280px"
+        android:layout_marginTop="50px"
+        android:text="2위"
+        android:textColor="#ffffff"
+        android:background="@drawable/radius"
+        android:textSize="18sp"/>
+    <TextView
+        android:paddingLeft="40px"
+        android:layout_width="200px"
+        android:layout_height="150px"
+        android:text="3위"
+        android:layout_marginStart="240px"
+        android:layout_marginTop="50px"
+        android:textColor="#ffffff"
+        android:background="@drawable/radius"
+        android:textSize="18sp"/>
+</LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="150px"
+              android:layout_marginTop="80px"
+                android:background="@drawable/xml_blank"/>
+
+        </LinearLayout>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="20dp"
+            android:layout_marginTop="950px"
             android:text="@string/static_icon_count"/>
 
         <LinearLayout
@@ -80,6 +170,5 @@
         </LinearLayout>
 
 
-    </LinearLayout>
+    </RelativeLayout>
 
-</RelativeLayout>

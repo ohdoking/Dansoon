@@ -17,7 +17,30 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/colorAppMain"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            app:popupTheme="@style/AppTheme.PopupOverlay" >
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <Button
+                    android:id="@+id/button"
+                    android:layout_width="110px"
+                    android:layout_height="140px"
+                    android:layout_marginStart="10px"
+                    android:layout_marginTop="30px"
+                    android:layout_marginBottom="100px"
+                    />
+                <TextView
+                    android:layout_width="400px"
+                    android:layout_height="100px"
+                    android:text="통계"
+                    android:layout_marginStart="20px"
+                    android:layout_marginTop="25px"
+                    android:layout_marginBottom="100px"
+                    android:textColor="#ffffff"/>
+            </LinearLayout>
+        </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
 
