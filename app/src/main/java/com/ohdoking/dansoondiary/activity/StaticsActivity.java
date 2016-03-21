@@ -28,6 +28,7 @@ import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.ohdoking.dansoondiary.R;
+import com.ohdoking.dansoondiary.common.DsStatic;
 import com.ohdoking.dansoondiary.dao.DiaryDao;
 import com.ohdoking.dansoondiary.dto.Diary;
 import com.ohdoking.dansoondiary.dto.DsIcon;
@@ -105,20 +106,9 @@ public class StaticsActivity extends BaseAppCompatActivity implements OnChartVal
 
     void initIconRank(){
         //icon top 3 init
-        for(int i = 0 ; i < iconList.size() ; i++) {
-            if(i == 0){
-                topIcon.setImageResource(iconList.get(i).getIcon());
-            }
-            else if(i == 1){
-                secIcon.setImageResource(iconList.get(i).getIcon());
-            }
-            else if(i == 2){
-                thirdIcon.setImageResource(iconList.get(i).getIcon());
-            }
-            else{
-                break;
-            }
-        }
+        topIcon.setImageResource(DsStatic.buttonList[iconList.get(0).getIcon()]);
+        secIcon.setImageResource(DsStatic.buttonList[iconList.get(1).getIcon()]);
+        thirdIcon.setImageResource(DsStatic.buttonList[iconList.get(2).getIcon()]);
     }
 
     /**
