@@ -152,7 +152,11 @@ public class ModiDiaryActivity extends BaseAppCompatActivity {
                 }
                 newDiary.setId(resultKey);
                 newDiary.setImage(diary.getImage());
-                newDiary.setMemo(modiText.getText().toString());
+                String modiTextValue = modiText.getText().toString();
+                if(modiTextValue.equals("")){
+                    modiTextValue = "none";
+                }
+                newDiary.setMemo(modiTextValue);
 
                 try {
                     diaryDao.open();
