@@ -12,13 +12,13 @@
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
 
+
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/colorAppMain"
             app:popupTheme="@style/AppTheme.PopupOverlay" >
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -47,8 +47,9 @@
                     android:layout_height="fill_parent"
                     android:text="@string/title_static"/>
 
+
             </LinearLayout>
-            </android.support.v7.widget.Toolbar>
+        </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
 

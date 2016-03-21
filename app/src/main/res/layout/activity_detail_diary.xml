@@ -24,13 +24,14 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
                 android:padding="35px"
+                android:paddingStart="0px"
                 android:weightSum="1">
 
                 <!-- This is a centered logo -->
                 <ImageView
                     android:id="@+id/moveList"
                     android:layout_gravity="center"
-                    android:src="@drawable/calendar_icon"
+                    android:src="@drawable/back_icon"
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
                     android:layout_height="wrap_content"/>

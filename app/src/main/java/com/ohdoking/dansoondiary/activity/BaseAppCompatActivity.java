@@ -16,8 +16,8 @@ public class BaseAppCompatActivity extends AppCompatActivity {
     };
 
     protected String[] mParties = new String[] {
-            "Party A", "Party B", "Party C", "Party D", "Party E", "Party F", "Party G", "Party H",
-            "Party I", "Party J", "Party K", "Party L", "Party M", "Party N", "Party O", "Party P",
+            "ICON A", "ICON B", "ICON C", "ICON D", "ICON E", "ICON F", "ICON G", "ICON H",
+            "ICON I", "ICON J", "ICON K", "ICON L", "ICON M", "Party N", "Party O", "Party P",
             "Party Q", "Party R", "Party S", "Party T", "Party U", "Party V", "Party W", "Party X",
             "Party Y", "Party Z"
     };

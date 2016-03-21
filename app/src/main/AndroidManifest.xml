@@ -12,9 +12,7 @@
         <activity
             android:name=".activity.MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar" >
-
-            </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.DetailDiaryActivity"
             android:label="@string/title_activity_detail_diary"
@@ -31,9 +29,7 @@
         <activity
             android:name=".activity.WriteDiaryActivity"
             android:label="@string/title_activity_write_diary"
-            android:theme="@style/AppTheme.NoActionBar" >
-
-            </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.IconListActivity"
             android:label="@string/title_activity_icon_list"
@@ -45,15 +41,16 @@
         <activity
             android:name=".activity.StaticsActivity"
             android:label="@string/title_activity_statics"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.MainListActivity"
             android:label="@string/title_activity_main_list"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.ModiDiaryActivity"
+            android:label="@string/title_activity_modi_diary"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activity.PasswordActivity"></activity>
     </application>
 
 </manifest>

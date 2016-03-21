@@ -10,9 +10,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ohdoking.dansoondiary.R;
+import com.ohdoking.dansoondiary.common.DsStatic;
+import com.ohdoking.dansoondiary.dao.DiaryDao;
+import com.ohdoking.dansoondiary.dto.Diary;
 import com.roomorama.caldroid.CaldroidFragment;
 import com.roomorama.caldroid.CaldroidGridAdapter;
+import com.roomorama.caldroid.CalendarHelper;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.Map;
 
 import hirondelle.date4j.DateTime;
@@ -22,10 +29,15 @@ public class CaldroidSampleCustomAdapter extends CaldroidGridAdapter {
 	TextView tv1;
 	ImageView tv2;
 
+	DiaryDao diaryDao;
+
+	ArrayList<Diary> diaryArrayList;
+
 	public CaldroidSampleCustomAdapter(Context context, int month, int year,
 									   Map<String, Object> caldroidData,
 									   Map<String, Object> extraData) {
 		super(context, month, year, caldroidData, extraData);
+		getAllDate();
 	}
 
 	@Override
@@ -47,11 +59,35 @@ public class CaldroidSampleCustomAdapter extends CaldroidGridAdapter {
 		tv1 = (TextView) cellView.findViewById(R.id.tv1);
 		tv2 = (ImageView) cellView.findViewById(R.id.iv1);
 
-		tv1.setTextColor(Color.BLACK);
 
+
+
+//		tv1.setTextColor(Color.BLACK);
 		// Get dateTime of this cell
 		DateTime dateTime = this.datetimeList.get(position);
 		Resources resources = context.getResources();
+
+		if(dateTime.getWeekDay() != 1){
+
+			tv1.setTextColor(context.getResources().getColor(R.color.colorAppMain));
+		}
+		else{
+			tv1.setTextColor(Color.RED);
+
+		}
+
+		for (Diary diary : diaryArrayList){
+//			Drawable icon = context.getResources().getDrawable(diary.getImage().get(0) );
+			Date tempTime = new Date(diary.getDate());
+			Date tempTime2 = new Date();
+
+			DateTime dateTime2 = CalendarHelper.convertDateToDateTime(tempTime);
+			if(dateTime2.equals(dateTime)){
+				tv2.setImageResource(DsStatic.buttonList[diary.getImage().get(0)]);
+			}
+		}
+
+
 
 		// Set color of the dates in previous / next month
 		if (dateTime.getMonth() != month) {
@@ -85,9 +121,11 @@ public class CaldroidSampleCustomAdapter extends CaldroidGridAdapter {
 		// Customize for selected dates
 		if (selectedDates != null && selectedDates.indexOf(dateTime) != -1) {
 			cellView.setBackgroundColor(resources
-					.getColor(com.caldroid.R.color.caldroid_sky_blue));
+					.getColor(R.color.colorAppMain));
 
-			tv1.setTextColor(Color.BLACK);
+//			cellView.setBackgroundResource(R.drawable.app_color_border);
+
+				tv1.setTextColor(Color.BLACK);
 
 		} else {
 			shouldResetSelectedView = true;
@@ -117,6 +155,22 @@ public class CaldroidSampleCustomAdapter extends CaldroidGridAdapter {
 		setCustomResources(dateTime, cellView, tv1);
 
 		return cellView;
+	}
+
+	/**
+	 * 모든 DB 데이터를 가져옴
+	 */
+	public void getAllDate(){
+		diaryDao = new DiaryDao(context);
+		try {
+			diaryDao.open();
+			diaryArrayList = diaryDao.getAllDiary();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			diaryDao.close();
+		}
 	}
 
 }

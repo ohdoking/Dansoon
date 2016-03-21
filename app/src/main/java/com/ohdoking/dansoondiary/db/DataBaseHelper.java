@@ -14,6 +14,9 @@ public class DataBaseHelper extends SQLiteOpenHelper{
     public static final String DIARYS_DATE = "date";
     public static final String DIARYS_IMAGE = "image";
     public static final String DIARYS_MEMO = "memo";
+    public static final String DIARYS_MONTH = "month";
+    public static final String DIARYS_YEAR = "year";
+    public static final String DIARYS_DAY = "day";
 
 
     private static final String DATABASE_NAME = "Diary.db";
@@ -22,10 +25,14 @@ public class DataBaseHelper extends SQLiteOpenHelper{
     // creation SQLite statement
     private static final String CREATE_DIARYS_TABLE= "create table " + DIARYS_TABLE
             + "(" + DIARYS_ID + " integer primary key autoincrement, "
-            + DIARYS_IMAGE + " text not null,"
             + DIARYS_MEMO + " text ,"
-            + DIARYS_DATE + " text not null"
+            + DIARYS_IMAGE + " text not null,"
+            + DIARYS_DATE + " numeric not null, "
+            + DIARYS_MONTH + " integer not null, "
+            + DIARYS_YEAR + " integer not null,"
+            + DIARYS_DAY + " integer not null"
             + ");";
+
 
     private static DataBaseHelper instance;
 

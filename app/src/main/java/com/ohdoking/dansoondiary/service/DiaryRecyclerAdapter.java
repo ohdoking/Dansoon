@@ -10,12 +10,12 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.ohdoking.dansoondiary.R;
+import com.ohdoking.dansoondiary.common.DsStatic;
 import com.ohdoking.dansoondiary.dto.Diary;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Calendar;
+import java.util.Locale;
 
 /**
  * Created by Administrator on 2016-02-27.
@@ -50,27 +50,39 @@ public class DiaryRecyclerAdapter extends RecyclerView.Adapter<DiaryViewHolder> 
     public void onBindViewHolder(DiaryViewHolder diaryViewHolder, int i) {
         Diary diaryItem = diaryItemList.get(i);
 
-        Date date = new Date(diaryItem.getDate());
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(diaryItem.getDate());
 
-        DateFormat format2=new SimpleDateFormat("EEEE");
-        String finalDay=format2.format(date);
-        Log.i("ohdoking",String.valueOf(finalDay));
-        diaryViewHolder.dayView.setText(String.valueOf(date.getDay()));
-        diaryViewHolder.weekDayView.setText(changeLanuage(finalDay));
 
-        for(Integer image = 0; image > diaryItem.getImage().size() ; i++){
+//        Date date = new Date();
+//        DateTime tempdate = CalendarHelper.convertDateToDateTime(date);
+//        DateFormat format2=new SimpleDateFormat("EEEE");
+//        String finalDay=format2.format(date);
+//        Log.i("ohdoking1",String.valueOf(finalDay));
+//        Log.i("ohdoking1",date.getDay()+"");
+        diaryViewHolder.dayView.setText(String.valueOf(calendar.get(Calendar.DAY_OF_MONTH)));
+        String dayLongName = calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault());
+        diaryViewHolder.weekDayView.setText(dayLongName);
+
+        diaryViewHolder.iconView1.setImageResource(R.drawable.diary_null_icon);
+        diaryViewHolder.iconView2.setImageResource(R.drawable.diary_null_icon);
+        diaryViewHolder.iconView3.setImageResource(R.drawable.diary_null_icon);
+        diaryViewHolder.iconView4.setImageResource(R.drawable.diary_null_icon);
+
+        for(Integer image = 0; image < diaryItem.getImage().size() ; image++){
             Integer imageValue = diaryItem.getImage().get(image);
-            if(image == 0){
-                diaryViewHolder.iconView1.setImageResource(imageValue);
+            Log.i("ohdoking2",String.valueOf(imageValue));
+            if(image == 0 && imageValue != null){
+                diaryViewHolder.iconView1.setImageResource(DsStatic.buttonList[imageValue]);
             }
-            else if(image == 1){
-                diaryViewHolder.iconView2.setImageResource(imageValue);
+            else if(image == 1 && imageValue != null){
+                diaryViewHolder.iconView2.setImageResource(DsStatic.buttonList[imageValue]);
             }
-            else if(image == 2){
-                diaryViewHolder.iconView3.setImageResource(imageValue);
+            else if(image == 2 && imageValue != null){
+                diaryViewHolder.iconView3.setImageResource(DsStatic.buttonList[imageValue]);
             }
-            else if(image == 3){
-                diaryViewHolder.iconView4.setImageResource(imageValue);
+            else if(image == 3 && imageValue != null){
+                diaryViewHolder.iconView4.setImageResource(DsStatic.buttonList[imageValue]);
             }
         }
 
@@ -114,13 +126,27 @@ public class DiaryRecyclerAdapter extends RecyclerView.Adapter<DiaryViewHolder> 
 
         return result;
     }
+    public void swap(ArrayList<Diary> datas){
+        diaryItemList.clear();
+        diaryItemList.addAll(datas);
+        notifyDataSetChanged();
+    }
+
     @Override
     public int getItemCount() {
         return (null != diaryItemList ? diaryItemList.size() : 0);
     }
 
+    public Diary getItem(int position) {
+        return diaryItemList.get(position);
+    }
+
     public void addItem(Diary diary){
         diaryItemList.add(diary);
+    }
+
+    public void addAllItem(ArrayList<Diary> diarys){
+        diaryItemList.addAll(diarys);
     }
 
     View.OnClickListener clickListener = new View.OnClickListener() {

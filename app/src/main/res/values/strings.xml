@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DansoonDiary</string>
+    <string name="app_name">단순</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_detail_diary">DetailDiaryActivity</string>
     <string name="title_activity_write_diary">WriteDiaryActivity</string>
@@ -15,9 +15,19 @@
     <string name="static_month_icon">이 달의 아이콘</string>
     <string name="static_icon_count">아이콘 사용 횟수</string>
     <string name="title_main_calendar">캘린더</string>
+    <string name="title_fix_icon">아이콘 편집 목록</string>
     <string name="title_main_timeline">타임라인</string>
     <string name="title_write">작성</string>
-    
+    <string name="title_static">통계</string>
+    <string name="title_show_today">하루보기</string>
+    <string name="title_modi">수정</string>
+    <string name="title_setting">세팅</string>
+
+
+    <string name="modi">수정</string>
+    <string name="delete">삭제</string>
+    <string name="complete">완료</string>
+
 
     <string name="monday">월요일</string>
     <string name="tuesday">화요일</string>
@@ -26,9 +36,7 @@
     <string name="friday">금요일</string>
     <string name="saturday">토요일</string>
     <string name="sunday">일요일</string>
-
-
-
+    <string name="title_activity_modi_diary">ModiDiaryActivity</string>
 
 
 </resources>

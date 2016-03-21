@@ -15,23 +15,31 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.ohdoking.dansoondiary.R;
+import com.ohdoking.dansoondiary.dao.DiaryDao;
 import com.ohdoking.dansoondiary.fragment.CaldroidSampleCustomFragment;
+import com.ohdoking.dansoondiary.service.CaldroidSampleCustomAdapter;
 import com.roomorama.caldroid.CaldroidFragment;
 import com.roomorama.caldroid.CaldroidListener;
+import com.roomorama.caldroid.CalendarHelper;
 
 import java.util.Calendar;
 import java.util.Date;
+
+import hirondelle.date4j.DateTime;
 
 public class MainActivity  extends BaseAppCompatActivity {
 
     Date date;
     CaldroidSampleCustomFragment caldroidFragment;
+    CaldroidSampleCustomAdapter adapter;
     // A integer, that identifies each notification uniquely
     public static final int NOTIFICATION_ID = 1;
 
     ImageView moveList;
     ImageView moveSetting;
     ImageView moveStatic;
+
+    DiaryDao diaryDao;
 
     public final static String
             DIALOG_TITLE = "dialogTitle",
@@ -56,10 +64,21 @@ public class MainActivity  extends BaseAppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarmain);
         setSupportActionBar(toolbar);
 
+
         initId();
         menuClickEvent();
         calendarInit();
         ClickEvent();
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+
+        calendarInit();
+
     }
 
     /**
@@ -84,6 +103,7 @@ public class MainActivity  extends BaseAppCompatActivity {
         args.putInt(CaldroidFragment.MONTH, cal.get(Calendar.MONTH) + 1);
         args.putInt(CaldroidFragment.YEAR, cal.get(Calendar.YEAR));
         caldroidFragment.setArguments(args);
+
 
         caldroidFragment.setCaldroidListener(listener);
 
@@ -123,8 +143,17 @@ public class MainActivity  extends BaseAppCompatActivity {
 
             LinearLayout l = (LinearLayout) view;
             ImageView i = (ImageView) l.getChildAt(0);
+            Intent intent = new Intent(MainActivity.this, DetailDiaryActivity.class);
+            DateTime tempdate = CalendarHelper.convertDateToDateTime(date);
+            intent.putExtra("date-key-year",tempdate.getYear());
+            intent.putExtra("date-key-month",tempdate.getMonth());
+            intent.putExtra("date-key-day",tempdate.getDay());
+            startActivityForResult(intent,2);
 
-            i.setImageResource(R.mipmap.ic_launcher);
+
+
+
+//            i.setImageResource(R.mipmap.ic_launcher);
 
             Toast.makeText(getApplicationContext(), String.valueOf(date),
                     Toast.LENGTH_SHORT).show();
@@ -133,22 +162,22 @@ public class MainActivity  extends BaseAppCompatActivity {
         @Override
         public void onChangeMonth(int month, int year) {
             String text = "month: " + month + " year: " + year;
-            Toast.makeText(getApplicationContext(), text,
-                    Toast.LENGTH_SHORT).show();
+            /*Toast.makeText(getApplicationContext(), text,
+                    Toast.LENGTH_SHORT).show();*/
         }
 
         @Override
         public void onLongClickDate(Date date, View view) {
-            Toast.makeText(getApplicationContext(),
+            /*Toast.makeText(getApplicationContext(),
                     "Long click " + String.valueOf(date),
-                    Toast.LENGTH_SHORT).show();
+                    Toast.LENGTH_SHORT).show();*/
         }
 
         @Override
         public void onCaldroidViewCreated() {
-            Toast.makeText(getApplicationContext(),
+            /*Toast.makeText(getApplicationContext(),
                     "Caldroid view is created",
-                    Toast.LENGTH_SHORT).show();
+                    Toast.LENGTH_SHORT).show();*/
         }
 
     };
@@ -199,6 +228,75 @@ public class MainActivity  extends BaseAppCompatActivity {
             }
         });
     }
+
+    /**
+     * 엑티비티가 끝나 후
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (resultCode) {
+            case 2:
+//                setDateInView();
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    /*void setDateInView(){
+        Date date = new Date(System.currentTimeMillis());
+        DateTime tempdate = CalendarHelper.convertDateToDateTime(date);
+        Log.i("ohdoking1",tempdate.getMonth()+" : "+tempdate.getYear());
+        diarysList = getMonthDate(tempdate.getMonth(),tempdate.getYear());
+    }*/
+    /**
+     * 해당 년 월에 대한 데이터를 가져옴
+     */
+    /*ArrayList<Diary> getMonthDate(Integer month, Integer year){
+
+        yearAndMonth.setText(year+"년 "+month+"월");
+
+        ArrayList<Diary> diaryArrayList = new ArrayList<Diary>();
+        diaryDao = new DiaryDao(getApplicationContext());
+        try {
+            diaryDao.open();
+            diaryArrayList = diaryDao.getMonthDiary(month, year);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            diaryDao.close();
+        }
+        return  diaryArrayList;
+    }*/
+
+    /**
+     * 모든 DB 데이터를 가져옴
+     */
+   /* void getAllDate(){
+        diaryDao = new DiaryDao(getApplicationContext());
+
+        try {
+            diaryDao.open();
+            ArrayList<Diary> diaryList = diaryDao.getAllDiary();
+            for (Diary diary : diaryList){
+                Drawable icon = getResources().getDrawable(diary.getImage().get(0) );
+                Date tempTime = new Date(diary.getDate());
+                Date tempTime2 = new Date();
+                Log.i("ohdoking1",tempTime.getTime()+" : "+tempTime2.getTime());
+                caldroidFragment.setBackgroundDrawableForDate(icon,tempTime);
+
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            diaryDao.close();
+        }
+    }*/
 
 
     /**

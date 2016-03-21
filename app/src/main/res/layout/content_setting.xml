@@ -3,93 +3,291 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.ohdoking.dansoondiary.activity.SettingActivity"
     tools:showIn="@layout/activity_setting">
 
-    <LinearLayout
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/blank"
-            android:layout_width="match_parent"
-            android:layout_height="170px"
-            android:background="@drawable/xml_blank"
-            />
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/xml_listborder">
-
-        <TextView
-            android:id="@+id/backup"
-            android:layout_width="match_parent"
-            android:layout_height="250px"
-            android:paddingStart="15dp"
-            android:paddingTop="25dp"
-            android:text="@string/setting_backup"
-           />
-        <ImageView
-            android:layout_width="100px"
-            android:layout_height="100px"
-            android:layout_marginStart="1100px"
-            android:layout_marginTop="100px"
-            android:background="@drawable/cccc"
-            />
-    </LinearLayout>
-
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fadingEdge="none"
+        android:fillViewport="true">
 
         <LinearLayout
-            android:layout_height="250px"
             android:layout_width="match_parent"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="32dp"
+                android:background="#f3f5f5" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="0.1dp"
+                android:background="#959494" />
+
+            <RelativeLayout
+                android:id="@+id/layout_backup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ffffff">
+
+                <ImageButton
+                    android:id="@+id/mailBtn"
+                    android:layout_width="11dp"
+                    android:layout_height="18dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="23dp"
+                    android:background="#00000000"
+                    android:src="@drawable/cccc" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginBottom="19dp"
+                    android:layout_marginLeft="19dp"
+                    android:layout_marginTop="18.5dp"
+                    android:text="백업 설정"
+                    android:textColor="#7a7a7a"
+                    android:textSize="17sp" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="0.1dp"
+                android:background="#959494" />
+            <RelativeLayout
+                android:id="@+id/layout_locksetting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ffffff">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginBottom="19dp"
+                    android:layout_marginLeft="19dp"
+                    android:layout_marginTop="18.5dp"
+                    android:text="잠금 설정"
+                    android:textColor="#7a7a7a"
+                    android:textSize="17sp" />
+
+                <ToggleButton
+                    android:id="@+id/dataSwitch"
+                    android:layout_width="41dp"
+                    android:layout_height="18dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="23dp"
+                    android:background="@drawable/toggle_selector"
+                    android:checked="false"
+                    android:textOff=""
+                    android:textOn="" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="0.1dp"
+                android:background="#959494" />
+
+            <RelativeLayout
+                android:id="@+id/layout_changepw"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ffffff">
+
+                <ImageButton
+                    android:id="@+id/tutorialBtn"
+                    android:layout_width="11dp"
+                    android:layout_height="18dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="23dp"
+                    android:background="#00000000"
+                    android:src="@drawable/cccc" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginBottom="19dp"
+                    android:layout_marginLeft="19dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="18.5dp"
+                    android:text="비밀번호 변경"
+                    android:textColor="#7a7a7a"
+                    android:textSize="17sp" />
+            </RelativeLayout>
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="0.1dp"
+                android:background="#959494" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="32dp"
+                android:background="#f3f5f5" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="0.1dp"
+                android:background="#959494" />
+
+            <RelativeLayout
+                android:id="@+id/layout_version"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ffffff">
+
+                <TextView
+                    android:id="@+id/versionTv"
+                    android:layout_width="50dp"
+                    android:layout_height="18dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="23dp"
+                    android:background="#00000000"
+                    android:textSize="18sp"
+                    android:textColor="#7a7a7a"
+                    android:text="v 1.10"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginBottom="19dp"
+                    android:layout_marginLeft="19dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="18.5dp"
+                    android:text="버전"
+                    android:textColor="#7a7a7a"
+                    android:textSize="17sp" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="0.1dp"
+                android:background="#959494" />
+
+            <RelativeLayout
+                android:id="@+id/layout_fighting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ffffff">
+
+                <ImageButton
+                    android:id="@+id/fightingBtn"
+                    android:layout_width="11dp"
+                    android:layout_height="18dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="23dp"
+                    android:background="#00000000"
+                    android:src="@drawable/cccc" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginBottom="19dp"
+                    android:layout_marginLeft="19dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="18.5dp"
+                    android:text="단순 응원하기"
+                    android:textColor="#7a7a7a"
+                    android:textSize="17sp" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="0.1dp"
+                android:background="#959494" />
+
+            <RelativeLayout
+                android:id="@+id/layout_recommand"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ffffff">
+
+                <ImageButton
+                    android:id="@+id/recommandBtn"
+                    android:layout_width="11dp"
+                    android:layout_height="18dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="23dp"
+                    android:background="#00000000"
+                    android:src="@drawable/cccc" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginBottom="19dp"
+                    android:layout_marginLeft="19dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="18.5dp"
+                    android:text="단순 추천하기"
+                    android:textColor="#7a7a7a"
+                    android:textSize="17sp" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="0.1dp"
+                android:background="#959494" />
+
+            <RelativeLayout
+                android:id="@+id/layout_ask"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ffffff">
+
+                <ImageButton
+                    android:id="@+id/askBtn"
+                    android:layout_width="11dp"
+                    android:layout_height="18dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="23dp"
+                    android:background="#00000000"
+                    android:src="@drawable/cccc" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginBottom="19dp"
+                    android:layout_marginLeft="19dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="18.5dp"
+                    android:text="문의하기"
+                    android:textColor="#7a7a7a"
+                    android:textSize="17sp" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="0.1dp"
+                android:background="#959494" />
 
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.8"
-                android:text="@string/setting_lock"
-                android:background="@drawable/xml_listborder"
-                android:paddingStart="15dp"
-                android:paddingTop="25dp"/>
-
-            <Switch
-                android:id="@+id/lock"
-                android:layout_width="0dp"
-                android:layout_weight="0.2"
-                android:layout_height="match_parent" />
 
         </LinearLayout>
-<LinearLayout
-    android:orientation="horizontal"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-        <TextView
-            android:id="@+id/passwordChange"
-            android:layout_width="wrap_content"
-            android:layout_height="250px"
-            android:text="@string/setting_password_change"
-            android:background="@drawable/xml_listborder"
-            android:paddingStart="15dp"
-            android:paddingTop="25dp"/>
-        <ImageView
-            android:id="@+id/button2"
-            android:layout_width="100px"
-            android:layout_height="100px"
-            android:layout_marginStart ="900px"
-            android:background="@drawable/cccc"
-            android:layout_marginTop="100px"
-            />
-
-</LinearLayout>
-    </LinearLayout>
-
+    </ScrollView>
 </LinearLayout>

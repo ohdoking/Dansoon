@@ -18,36 +18,44 @@
             android:layout_height="?attr/actionBarSize"
             android:background="@color/colorAppMain"
             app:popupTheme="@style/AppTheme.PopupOverlay" >
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
-                <Button
-                    android:id="@+id/button"
-                    android:layout_width="110px"
-                    android:layout_height="140px"
-                    android:layout_marginStart="10px"
-                    android:layout_marginTop="30px"
-                    android:layout_marginBottom="100px"
-                    />
+                android:orientation="horizontal"
+                android:padding="35px"
+                android:paddingStart="0px"
+                android:weightSum="1">
+
+                <!-- This is a centered logo -->
+                <ImageView
+                    android:id="@+id/backWrite"
+                    android:layout_gravity="center"
+                    android:src="@drawable/back_icon"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.1"
+                    android:layout_height="wrap_content"/>
+
                 <TextView
-                    android:layout_width="400px"
-                    android:layout_height="100px"
-                    android:text="아이콘 편집 목록"
-                    android:layout_marginStart="20px"
-                    android:layout_marginTop="30px"
-                    android:layout_marginBottom="100px"
-                    android:textColor="#ffffff"/>
-                <Button
-                    android:id="@+id/button2"
-                    android:layout_width="80px"
-                    android:layout_height="160px"
-                    android:layout_marginStart="700px"
-                    android:layout_marginTop="25px"
-                    android:layout_marginBottom="100px"
-                    android:layout_marginEnd="30px"/>
+                    android:layout_width="0dp"
+                    android:layout_weight="0.75"
+                    android:textSize="10pt"
+                    android:textStyle="bold"
+                    android:textAlignment="textStart"
+                    android:layout_marginLeft="10px"
+                    android:gravity="center_vertical"
+                    android:layout_height="fill_parent"
+                    android:text="@string/title_fix_icon"/>
+
+                <ImageView
+                    android:id="@+id/saveIcon"
+                    android:layout_gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.15"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/check_icon"/>
+
             </LinearLayout>
+
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>

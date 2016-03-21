@@ -10,8 +10,8 @@ public class DansoonApplication extends Application {
     public void onCreate() {
         super.onCreate();
         Typekit.getInstance()
-                .addNormal(Typekit.createFromAsset(this, "fonts/thejunggodic130.ttf"));
-                /*.addBold(Typekit.createFromAsset(this, "fonts/thejunggodic.ttf"));*/
+                .addNormal(Typekit.createFromAsset(this, "fonts/thejunggodic130.ttf"))
+                .addBold(Typekit.createFromAsset(this, "fonts/thejunggodic.ttf"));
     }
 
 
