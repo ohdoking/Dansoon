@@ -111,5 +111,6 @@ public class DsStatic {
     public static final String STARTACTIVITY = "where";
     public static final String MODIDIARYACTIVITY = "modi";
 
-
+    public static final int NOCHANGE = 0;
+    public static final int CHANGE = 0;
 }

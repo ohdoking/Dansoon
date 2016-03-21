@@ -88,6 +88,7 @@ public class WriteDiaryActivity extends BaseAppCompatActivity {
         gridImageAdapter = new GridImageAdapter(getApplicationContext(),alreadySelectedArrayList);
         if(intent2.hasExtra(DsStatic.STARTACTIVITY)) {
             setGridBasicImageAdapter();
+            counter = alreadySelectedArrayList.size();
         }
         else{
             setGridImageAdapter();
@@ -202,7 +203,7 @@ public class WriteDiaryActivity extends BaseAppCompatActivity {
         backList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setResult(1, intent);
+                setResult(DsStatic.NOCHANGE, intent);
                 finish();
             }
         });
@@ -210,44 +211,52 @@ public class WriteDiaryActivity extends BaseAppCompatActivity {
         saveDiary.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(intent2.hasExtra("where")) {
-                    if (where.equals("modi")) {
+
+                if(selectArrayList.size() != 0){
+
+                    if(intent2.hasExtra("where")) {
+                        if (where.equals("modi")) {
+
+                        }
+                    }else {
+
+                        Diary diary = new Diary();
+                        diary.setImage(selectArrayList);
+
+
+                        try {
+                            diaryDao.open();
+                            int reusltValue = intent2.getIntExtra("resultKey",0);
+                            Log.i("ohdokingtest",reusltValue+"");
+                            if(reusltValue != 9999){
+                                diaryDao.addDiary(diary);
+                            }
+                            else{
+                                Integer year = intent2.getIntExtra("date-key-year",99);
+                                Integer month = intent2.getIntExtra("date-key-month",99);
+                                Integer day = intent2.getIntExtra("date-key-day",99);
+                                Log.i("ohdokingtest",year+" "+month+" "+day);
+                                diaryDao.addSpecificDayDiary(diary,year,month,day);
+                            }
+
+                            diaryDao.close();
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                        }
 
                     }
-                }else {
-                    Diary diary = new Diary();
-                    diary.setImage(selectArrayList);
-
-
-                    try {
-                        diaryDao.open();
-                        int reusltValue = intent2.getIntExtra("resultKey",0);
-                        Log.i("ohdokingtest",reusltValue+"");
-                        if(reusltValue != 9999){
-                            diaryDao.addDiary(diary);
-                        }
-                        else{
-                            Integer year = intent2.getIntExtra("date-key-year",99);
-                            Integer month = intent2.getIntExtra("date-key-month",99);
-                            Integer day = intent2.getIntExtra("date-key-day",99);
-                            Log.i("ohdokingtest",year+" "+month+" "+day);
-                            diaryDao.addSpecificDayDiary(diary,year,month,day);
-                        }
-
-                        diaryDao.close();
-                    } catch (SQLException e) {
-                        e.printStackTrace();
+                    intent2.putExtra("selectImagesize",selectArrayList.size());
+                    for(int j = 0;j < selectArrayList.size();j++){
+                        intent2.putExtra("selectImage"+j,selectArrayList.get(j));
                     }
 
-                }
-                intent2.putExtra("selectImagesize",selectArrayList.size());
-                for(int j = 0;j < selectArrayList.size();j++){
-                    intent2.putExtra("selectImage"+j,selectArrayList.get(j));
-                }
 
-
-                setResult(1, intent2);
-                finish();
+                    setResult(1, intent2);
+                    finish();
+                }
+                else{
+                    Toast.makeText(getApplicationContext(),"1개 이상 선택해주세요.",Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -286,7 +295,7 @@ public class WriteDiaryActivity extends BaseAppCompatActivity {
     @Override
     public void onBackPressed() {
         Log.d("CDA", "onBackPressed Called");
-        setResult(1, intent);
+        setResult(DsStatic.NOCHANGE, intent);
         finish();
     }
 
