@@ -219,6 +219,10 @@ public class ModiDiaryActivity extends BaseAppCompatActivity {
                 }
 
                 diary.setImage(imageList);
+                imageView1.setImageResource(DsStatic.buttonList[1]);
+                imageView2.setImageResource(DsStatic.buttonList[1]);
+                imageView3.setImageResource(DsStatic.buttonList[1]);
+                imageView4.setImageResource(DsStatic.buttonList[1]);
 
                 for(Integer image = 0; image < diary.getImage().size() ; image++){
                     Integer imageValue = diary.getImage().get(image);

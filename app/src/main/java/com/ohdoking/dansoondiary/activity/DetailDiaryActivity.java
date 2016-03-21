@@ -12,17 +12,21 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ohdoking.dansoondiary.R;
 import com.ohdoking.dansoondiary.common.DsStatic;
 import com.ohdoking.dansoondiary.dao.DiaryDao;
 import com.ohdoking.dansoondiary.dto.Diary;
+import com.ohdoking.dansoondiary.service.OnSwipeTouchListener;
 import com.roomorama.caldroid.CalendarHelper;
 
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -36,6 +40,7 @@ public class DetailDiaryActivity extends BaseAppCompatActivity {
     Integer resultKey;
     Long resultDateKey;
 
+    LinearLayout detailLayout;
     EditText modiText;
 
     ImageView imageView1;
@@ -45,6 +50,11 @@ public class DetailDiaryActivity extends BaseAppCompatActivity {
 
     TextView dateTv;
     TextView time;
+
+    String direct;
+
+    ArrayList<Diary> currentDiaryList;
+    Integer currentNum = 9999;
 
     ImageView moveList;
 
@@ -71,12 +81,21 @@ public class DetailDiaryActivity extends BaseAppCompatActivity {
             diaryDao.open();
             if(resultKey != 9999){
                 diary = diaryDao.getDiaryById(resultKey);
+                Date date = new Date(diary.getDate());
+                DateTime tempdate = CalendarHelper.convertDateToDateTime(date);
+                Integer year = tempdate.getYear();
+                Integer month = tempdate.getMonth();
+                Integer day = tempdate.getDay();
+                currentDiaryList = diaryDao.getDiaryByDate(year,month,day);
+                currentNum = getCurrentNum(currentDiaryList,diary.getId());
             }
             else{
                 Integer year = i.getIntExtra("date-key-year",99);
                 Integer month = i.getIntExtra("date-key-month",99);
                 Integer day = i.getIntExtra("date-key-day",99);
-                diary = diaryDao.getDiaryByDate(year,month,day);
+                currentDiaryList = diaryDao.getDiaryByDate(year,month,day);
+                diary = currentDiaryList.get(0);
+                currentNum = 0;
             }
 
             if(diary == null){
@@ -140,17 +159,32 @@ public class DetailDiaryActivity extends BaseAppCompatActivity {
                 finish();
             }
         });
-        modiText.setOnClickListener(new View.OnClickListener() {
+       /* modiText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(DetailDiaryActivity.this, ModiDiaryActivity.class);
                 i.putExtra("key",diary.getId());
                 startActivityForResult(i,1);
             }
-        });
+        });*/
+
+        SwipeEvent();
+    }
+
+    private Integer getCurrentNum(ArrayList<Diary> currentDiaryList,Integer id) {
+        Integer result = null;
+        for (int i = 0 ; i < currentDiaryList.size() ; i++){
+            if(currentDiaryList.get(i).getId() == id){
+                result = i;
+            }
+        }
+        Log.i("ohdoking12345",result+"");
+        return result;
     }
 
     void initId(){
+
+        detailLayout = (LinearLayout) findViewById(R.id.layout_detail);
         modiText = (EditText) findViewById(R.id.modiMemo);
 
         imageView1 = (ImageView) findViewById(R.id.image);
@@ -176,7 +210,31 @@ public class DetailDiaryActivity extends BaseAppCompatActivity {
         switch (item.getItemId()) {
             case R.id.modi: {
                 Intent i = new Intent(DetailDiaryActivity.this, ModiDiaryActivity.class);
-                i.putExtra("key",diary.getId());
+
+                Integer sendCurrentNum = 0;
+
+                /*if(direct == null){
+                    sendCurrentNum = currentNum;
+                }
+                else if(currentNum == 0 ){
+                    sendCurrentNum = currentNum - 1;
+                }
+                else if(currentNum == currentDiaryList.size()-1){
+                    sendCurrentNum = currentNum + 1;
+                }
+                else if(direct != null){
+                    if(direct.equals("right")){
+                        sendCurrentNum = currentNum + 1;
+                    }
+                    else if(direct.equals("left")){
+                        sendCurrentNum = currentNum - 1;
+                    }
+                }
+                else{
+                    sendCurrentNum = currentNum;
+                }*/
+                Log.i("ohdoking222",sendCurrentNum+"");
+                i.putExtra("key",currentDiaryList.get(currentNum).getId());
                 startActivityForResult(i,1);
                 break;
             }
@@ -246,6 +304,99 @@ public class DetailDiaryActivity extends BaseAppCompatActivity {
 
             default:
                 break;
+        }
+    }
+
+    /**
+     * Swipe Event
+     */
+    private void SwipeEvent() {
+
+        detailLayout.setOnTouchListener(new OnSwipeTouchListener(getApplicationContext()) {
+            @Override
+            public void onSwipeLeft() {
+                setSiwpeDateInView(1);
+                direct = "left";
+                Log.i("ohdoking222","left"+currentNum+":"+currentDiaryList.get(currentNum).getId());
+            }
+
+            @Override
+            public void onSwipeRight() {
+                direct = "right";
+                setSiwpeDateInView(-1);
+                Log.i("ohdoking222","right"+currentNum+":"+currentDiaryList.get(currentNum).getId());
+            }
+        });
+    }
+
+    /**
+     * Swipe 시 데이터 변경
+     */
+    void setSiwpeDateInView(int value){
+
+        String message;
+        if(currentNum < 0 || currentNum > currentDiaryList.size()-1){
+
+        }
+        else{
+            currentNum = currentNum + value;
+
+            if(currentNum < 0 || currentNum > currentDiaryList.size()-1){
+                if(currentNum < 0){
+                    message = "첫번째 일기입니다.";
+                    currentNum = 0;
+                }
+                else{
+                    currentNum = currentDiaryList.size()-1;
+                    message = "마지막 일기입니다.";
+                }
+                Toast.makeText(getApplicationContext(),message,Toast.LENGTH_SHORT).show();
+            }
+
+            Diary changeDiary = currentDiaryList.get(currentNum);
+            Date date = new Date(changeDiary.getDate());
+            Calendar c = Calendar.getInstance();
+            c.setTimeInMillis(changeDiary.getDate());
+
+            DateFormat format2=new SimpleDateFormat("EEEE");
+            DateTime tempdate = CalendarHelper.convertDateToDateTime(date);
+            String finalDay=format2.format(date);
+            dateTv.setText(tempdate.getYear()+"."+tempdate.getMonth()+"."+tempdate.getDay()+" "+finalDay);
+
+            time.setText(c.get(Calendar.HOUR)+":"+c.get(Calendar.MINUTE));
+
+            imageView1.setImageResource(DsStatic.buttonList[1]);
+            imageView2.setImageResource(DsStatic.buttonList[1]);
+            imageView3.setImageResource(DsStatic.buttonList[1]);
+            imageView4.setImageResource(DsStatic.buttonList[1]);
+            for(Integer image = 0; image < changeDiary.getImage().size() ; image++){
+
+                Integer imageValue = changeDiary.getImage().get(image);
+                Log.i("ohdoking2",imageValue+"");
+
+                if(image == 0 && imageValue != null){
+                    imageView1.setImageResource(DsStatic.buttonList[imageValue]);
+                }
+                else if(image == 1 && imageValue != null){
+                    imageView2.setImageResource(DsStatic.buttonList[imageValue]);
+                }
+                else if(image == 2 && imageValue != null){
+                    imageView3.setImageResource(DsStatic.buttonList[imageValue]);
+                }
+                else if(image == 3 && imageValue != null){
+                    imageView4.setImageResource(DsStatic.buttonList[imageValue]);
+                }
+            }
+            String editString = diary.getMemo().toString();
+            if(editString.equals("none")){
+                modiText.setHint("당신의 일상을 입력해주세요");
+            }
+            else{
+                modiText.setText(editString);
+            }
+
+
+
         }
     }
 

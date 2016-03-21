@@ -6,7 +6,6 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -184,13 +183,22 @@ public class MainListActivity extends BaseAppCompatActivity {
         listContentView.setOnTouchListener(new OnSwipeTouchListener(getApplicationContext()) {
             @Override
             public void onSwipeLeft() {
-                Log.i("ohdoking2","left");
                 setSiwpeDateInView(1);
             }
 
             @Override
             public void onSwipeRight() {
-                Log.i("ohdoking2","right");
+                setSiwpeDateInView(-1);
+            }
+        });
+        mRecyclerView.setOnTouchListener(new OnSwipeTouchListener(getApplicationContext()) {
+            @Override
+            public void onSwipeLeft() {
+                setSiwpeDateInView(1);
+            }
+
+            @Override
+            public void onSwipeRight() {
                 setSiwpeDateInView(-1);
             }
         });

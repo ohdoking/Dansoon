@@ -151,7 +151,8 @@ public class DiaryDao {
      * 날짜라 데이터 가져오기
      * @return
      */
-    public Diary getDiaryByDate(Integer year,Integer month,Integer day) {
+    public ArrayList<Diary> getDiaryByDate(Integer year,Integer month,Integer day) {
+        ArrayList<Diary> DIARYS_TABLE = new ArrayList<Diary>();
 
         String query = "SELECT * FROM "+DataBaseHelper.DIARYS_TABLE+" WHERE "
                 +DataBaseHelper.DIARYS_YEAR+ "=" +year+" AND "
@@ -162,17 +163,14 @@ public class DiaryDao {
         Cursor cursor = database.rawQuery(query, null);
 
         cursor.moveToFirst();
-        Diary diary;
-        if(cursor.getCount() != 0){
-            diary = parseDiary(cursor);
-        }
-        else{
-            diary = null;
+        while (!cursor.isAfterLast()) {
+            Diary diary = parseDiary(cursor);
+            DIARYS_TABLE.add(diary);
+            cursor.moveToNext();
         }
 
         cursor.close();
-        return diary;
-
+        return DIARYS_TABLE;
     }
 
     /**
