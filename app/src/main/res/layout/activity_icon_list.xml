@@ -41,7 +41,7 @@
                     android:textSize="10pt"
                     android:textStyle="bold"
                     android:textAlignment="textStart"
-                    android:layout_marginLeft="10px"
+                    android:layout_marginLeft="18sp"
                     android:gravity="center_vertical"
                     android:layout_height="fill_parent"
                     android:text="@string/title_fix_icon"/>

@@ -5,10 +5,7 @@
     android:id="@+id/listContentView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="32dp"
+    android:paddingTop="43.5dp"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.ohdoking.dansoondiary.activity.MainListActivity"
@@ -16,17 +13,26 @@
 
     <TextView
         android:id="@+id/yearAndMonth"
-        android:paddingTop="10dp"
-        android:textSize="30sp"
+        android:textSize="15sp"
         android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_marginBottom="6px"
-        android:layout_marginLeft="37px"/>
+        android:layout_height="15dp"
+        android:textColor="#66c4b1"
+        android:layout_marginLeft="18.5dp"/>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_marginRight="18.5dp"
+        android:layout_marginLeft="18.5dp"
+        android:layout_marginTop="3dp"
+        android:layout_height="0.1dp"
+        android:background="#959494" />
 
     <view
         android:id="@+id/recycler_view"
         class="android.support.v7.widget.RecyclerView"
-        android:layout_marginTop="40px"
+        android:paddingRight="18.5dp"
+        android:paddingLeft="18.5dp"
+        android:paddingTop="17.5dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerInParent="true"

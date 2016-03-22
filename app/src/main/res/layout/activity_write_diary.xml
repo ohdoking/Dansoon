@@ -39,7 +39,7 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_weight="0.75"
-                    android:textSize="10pt"
+                    android:textSize="18sp"
                     android:textAlignment="textStart"
                     android:layout_marginLeft="10px"
                     android:gravity="center_vertical"

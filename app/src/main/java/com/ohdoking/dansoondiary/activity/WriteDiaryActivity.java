@@ -163,10 +163,13 @@ public class WriteDiaryActivity extends BaseAppCompatActivity {
 //                LinearLayout l= (LinearLayout)parent.getChildAt(0);
 //                Image image = (ImageView)l.getChildAt(0);
                 Log.i("ohdoking1234",gridImageAdapter.getCount() +"=="+ lastIconPostion);
-                if(gridImageAdapter.getCount() == lastIconPostion){
-                    Intent intent  = new Intent(WriteDiaryActivity.this, IconListActivity.class);
-                    startActivity(intent);
-                    finish();
+
+                if(!intent2.hasExtra(DsStatic.STARTACTIVITY)) {
+                    if (gridImageAdapter.getCount() == lastIconPostion) {
+                        Intent intent = new Intent(WriteDiaryActivity.this, IconListActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
                 }
                 int realPosition = favoriteIconArrayList.get(position);
 
@@ -251,7 +254,7 @@ public class WriteDiaryActivity extends BaseAppCompatActivity {
                     }
 
 
-                    setResult(1, intent2);
+                    setResult(DsStatic.NOCHANGE, intent2);
                     finish();
                 }
                 else{

@@ -2,88 +2,84 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_detail"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="25dp"
     android:weightSum="1"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.ohdoking.dansoondiary.activity.DetailDiaryActivity"
-    tools:showIn="@layout/activity_detail_diary">
+    tools:context="com.ohdoking.dansoondiary.activity.ModiDiaryActivity"
+    tools:showIn="@layout/activity_modi_diary">
 
     <LinearLayout
+        android:layout_marginLeft="19dp"
+        android:layout_marginRight="19dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginBottom="2.5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/date"
-            android:layout_width="700px"
-            android:layout_height="200px"
-            android:layout_marginBottom="5px"
-            android:layout_marginStart="15px"
-            android:layout_marginTop="39px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
             android:text="2016.2.27 화요일"
-
             android:textColor="#66c4b1"
-            android:textSize="27.33sp" />
+            android:textStyle="bold"
+            android:textSize="17sp" />
 
         <TextView
             android:id="@+id/time"
-            android:layout_width="300px"
-            android:layout_height="150px"
-            android:layout_marginBottom="5px"
-            android:layout_marginEnd="30px"
-            android:layout_marginTop="40px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="9:00"
-            android:textColor="#7a7a7a"
-            android:textSize="27.33sp" />
+            android:textColor="#939292"
+            android:textSize="13sp" />
     </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.1dp"
+        android:layout_marginLeft="19dp"
+        android:layout_marginRight="19dp"
+        android:background="#959494" />
 
     <LinearLayout
         android:id="@+id/modiIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginBottom="35dp"
+        android:paddingLeft="19dp"
+        android:paddingRight="18.5dp"
         android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/image"
-            android:layout_width="200px"
-            android:layout_height="200px"
-            android:layout_marginBottom="68px"
-            android:layout_marginEnd="20px"
-            android:layout_marginStart="5px"
-            android:layout_marginTop="74px"
+            android:layout_width="69dp"
+            android:layout_height="69dp"
+            android:layout_marginRight="15dp"
             android:background="@drawable/diary_null_icon" />
 
         <ImageView
             android:id="@+id/image2"
-            android:layout_width="200px"
-            android:layout_height="200px"
-            android:layout_marginBottom="68px"
-            android:layout_marginEnd="20px"
-            android:layout_marginStart="20px"
-            android:layout_marginTop="74px"
+            android:layout_width="69dp"
+            android:layout_height="69dp"
+            android:layout_marginRight="15dp"
             android:background="@drawable/diary_null_icon" />
 
         <ImageView
             android:id="@+id/image3"
-            android:layout_width="200px"
-            android:layout_height="200px"
-            android:layout_marginBottom="68px"
-            android:layout_marginEnd="20px"
-            android:layout_marginStart="20px"
-            android:layout_marginTop="74px"
+            android:layout_width="69dp"
+            android:layout_height="69dp"
+            android:layout_marginRight="15dp"
             android:background="@drawable/diary_null_icon" />
 
         <ImageView
             android:id="@+id/image4"
-            android:layout_width="200px"
-            android:layout_height="200px"
-            android:layout_marginBottom="68px"
-            android:layout_marginEnd="39px"
-            android:layout_marginStart="20px"
-            android:layout_marginTop="74px"
+            android:layout_width="69dp"
+            android:layout_height="69dp"
             android:background="@drawable/diary_null_icon" />
     </LinearLayout>
 
@@ -93,19 +89,17 @@
 
     <EditText
         android:id="@+id/modiMemo1"
-        android:layout_width="900px"
-        android:layout_height="600px"
-        android:layout_marginBottom="84px"
-        android:layout_marginEnd="39px"
-        android:layout_marginStart="15px"
-        android:layout_marginTop="68px"
+        android:layout_width="327dp"
+        android:layout_height="137dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
         android:background="@drawable/xml_border"
-        android:paddingBottom="35px"
-        android:paddingEnd="35px"
-        android:paddingStart="35px"
-        android:paddingTop="35px"
+        android:paddingBottom="16.5dp"
+        android:paddingEnd="17dp"
+        android:paddingStart="17dp"
+        android:paddingTop="16.5dp"
         android:textColor="#7a7a7a"
-        android:textSize="20.67sp" />
-    >
+        android:textSize="15sp" />
+
 
 </LinearLayout>

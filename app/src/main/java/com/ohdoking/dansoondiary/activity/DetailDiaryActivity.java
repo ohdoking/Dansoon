@@ -5,8 +5,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.view.ContextThemeWrapper;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -94,7 +96,9 @@ public class DetailDiaryActivity extends BaseAppCompatActivity {
                 Integer month = i.getIntExtra("date-key-month",99);
                 Integer day = i.getIntExtra("date-key-day",99);
                 currentDiaryList = diaryDao.getDiaryByDate(year,month,day);
-                diary = currentDiaryList.get(0);
+                if(currentDiaryList.size() != 0){
+                    diary = currentDiaryList.get(0);
+                }
                 currentNum = 0;
             }
 
@@ -159,7 +163,7 @@ public class DetailDiaryActivity extends BaseAppCompatActivity {
                 finish();
             }
         });
-       /* modiText.setOnClickListener(new View.OnClickListener() {
+        /*modiText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(DetailDiaryActivity.this, ModiDiaryActivity.class);
@@ -255,11 +259,13 @@ public class DetailDiaryActivity extends BaseAppCompatActivity {
      * @return ab
      */
     private AlertDialog createDialog() {
-        AlertDialog.Builder ab = new AlertDialog.Builder(this);
-        ab.setTitle("삭제 확인");
-        ab.setMessage("정말 삭제하시겠습니까?");
-        ab.setCancelable(false);
-        ab.setIcon(getResources().getDrawable(R.mipmap.ic_launcher));
+        AlertDialog.Builder ab = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom));
+//        ab.setTitle("삭제 확인");
+        LayoutInflater inflater = this.getLayoutInflater();
+        ab.setView(inflater.inflate(R.layout.custom_delete_dialog,null));
+//        ab.setMessage("정말 삭제하시겠습니까?");
+        ab.setCancelable(true);
+//        ab.setIcon(getResources().getDrawable(R.mipmap.ic_launcher));
 
         ab.setPositiveButton("확인", new DialogInterface.OnClickListener() {
             @Override
@@ -298,7 +304,7 @@ public class DetailDiaryActivity extends BaseAppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         switch (resultCode) {
-            case 1:
+            case DsStatic.NOCHANGE:
                 finish();
                 break;
 
@@ -313,6 +319,21 @@ public class DetailDiaryActivity extends BaseAppCompatActivity {
     private void SwipeEvent() {
 
         detailLayout.setOnTouchListener(new OnSwipeTouchListener(getApplicationContext()) {
+            @Override
+            public void onSwipeLeft() {
+                setSiwpeDateInView(1);
+                direct = "left";
+                Log.i("ohdoking222","left"+currentNum+":"+currentDiaryList.get(currentNum).getId());
+            }
+
+            @Override
+            public void onSwipeRight() {
+                direct = "right";
+                setSiwpeDateInView(-1);
+                Log.i("ohdoking222","right"+currentNum+":"+currentDiaryList.get(currentNum).getId());
+            }
+        });
+        modiText.setOnTouchListener(new OnSwipeTouchListener(getApplicationContext()) {
             @Override
             public void onSwipeLeft() {
                 setSiwpeDateInView(1);
@@ -399,5 +420,7 @@ public class DetailDiaryActivity extends BaseAppCompatActivity {
 
         }
     }
+
+
 
 }
