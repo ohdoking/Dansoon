@@ -97,6 +97,7 @@ public class StaticsActivity extends BaseAppCompatActivity implements OnChartVal
                 finish();
             }
         });
+        moveList.setOnTouchListener(menuTouchListenr);
 
         initIconRank();
         initPieChart();

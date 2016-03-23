@@ -210,6 +210,7 @@ public class WriteDiaryActivity extends BaseAppCompatActivity {
                 finish();
             }
         });
+        backList.setOnTouchListener(menuTouchListenr);
 
         saveDiary.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -262,6 +263,7 @@ public class WriteDiaryActivity extends BaseAppCompatActivity {
                 }
             }
         });
+        saveDiary.setOnTouchListener(menuTouchListenr);
 
 
     }

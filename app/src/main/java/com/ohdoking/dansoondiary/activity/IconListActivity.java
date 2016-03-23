@@ -160,6 +160,9 @@ public class IconListActivity extends BaseAppCompatActivity {
             }
         });
 
+        backList.setOnTouchListener(menuTouchListenr);
+        saveDiary.setOnTouchListener(menuTouchListenr);
+
 
     }
 

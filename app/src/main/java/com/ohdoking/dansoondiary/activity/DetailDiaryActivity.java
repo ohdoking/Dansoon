@@ -163,6 +163,7 @@ public class DetailDiaryActivity extends BaseAppCompatActivity {
                 finish();
             }
         });
+        moveList.setOnTouchListener(menuTouchListenr);
         /*modiText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

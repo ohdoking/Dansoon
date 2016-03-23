@@ -1,7 +1,12 @@
 package com.ohdoking.dansoondiary.activity;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.Rect;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.ohdoking.dansoondiary.R;
 import com.tsengvn.typekit.TypekitContextWrapper;
@@ -32,4 +37,25 @@ public class BaseAppCompatActivity extends AppCompatActivity {
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(TypekitContextWrapper.wrap(newBase));
     }
+
+    View.OnTouchListener menuTouchListenr = new View.OnTouchListener() {
+        private Rect rect;
+
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            if(event.getAction() == MotionEvent.ACTION_DOWN){
+                ((ImageView)v).setColorFilter(Color.argb(50, 0, 0, 0));
+                rect = new Rect(v.getLeft(), v.getTop(), v.getRight(), v.getBottom());
+            }
+            if(event.getAction() == MotionEvent.ACTION_UP){
+                ((ImageView)v).setColorFilter(Color.argb(0, 0, 0, 0));
+            }
+            if(event.getAction() == MotionEvent.ACTION_MOVE){
+                if(!rect.contains(v.getLeft() + (int) event.getX(), v.getTop() + (int) event.getY())){
+                    ((ImageView)v).setColorFilter(Color.argb(0, 0, 0, 0));
+                }
+            }
+            return false;
+        }
+    };
 }

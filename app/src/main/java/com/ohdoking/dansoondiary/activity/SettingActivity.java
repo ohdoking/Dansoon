@@ -86,6 +86,8 @@ public class SettingActivity extends BaseAppCompatActivity {
         sendRecommand.setOnClickListener(mClickListener);
         sendFighting.setOnClickListener(mClickListener);
 
+        moveList.setOnTouchListener(menuTouchListenr);
+
         dataSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {

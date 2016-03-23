@@ -174,6 +174,9 @@ public class MainListActivity extends BaseAppCompatActivity {
                 startActivity(intent);
             }
         });
+        moveList.setOnTouchListener(menuTouchListenr);
+        moveSetting.setOnTouchListener(menuTouchListenr);
+        moveStatic.setOnTouchListener(menuTouchListenr);
     }
 
     /**
@@ -237,9 +240,5 @@ public class MainListActivity extends BaseAppCompatActivity {
                 break;
         }
     }
-
-
-
-
 
 }

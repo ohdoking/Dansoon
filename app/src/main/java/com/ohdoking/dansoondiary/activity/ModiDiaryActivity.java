@@ -185,6 +185,10 @@ public class ModiDiaryActivity extends BaseAppCompatActivity {
                 startActivityForResult(i,2);
             }
         });
+
+        moveList.setOnTouchListener(menuTouchListenr);
+//        modiDiary.setOnTouchListener(menuTouchListenr);
+        modiIcon.setOnTouchListener(menuTouchListenr);
     }
 
     void initId(){
