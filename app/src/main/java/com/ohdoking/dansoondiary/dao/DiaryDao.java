@@ -9,6 +9,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.ohdoking.dansoondiary.db.DataBaseHelper;
 import com.ohdoking.dansoondiary.dto.Diary;
+import com.ohdoking.dansoondiary.dto.RealDiary;
 import com.roomorama.caldroid.CalendarHelper;
 
 import java.lang.reflect.Type;
@@ -184,6 +185,33 @@ public class DiaryDao {
 
     /**
      * 모든 Diary 데이터 가져오기
+     * @return 모든 Diary 데이터
+     */
+    public ArrayList<RealDiary> getRealAllDiary() {
+        ArrayList<RealDiary> DIARYS_TABLE = new ArrayList<RealDiary>();
+
+        Cursor cursor = database.query(DataBaseHelper.DIARYS_TABLE,
+                DIARY_TABLE_COLUMNS, null, null, null, null, null);
+        cursor.moveToFirst();
+
+        while (!cursor.isAfterLast()) {
+            RealDiary diary = new RealDiary();
+            diary.setId(cursor.getInt(0));
+            diary.setMemo(cursor.getString(1));
+            diary.setImage(cursor.getString(2));
+            diary.setDate(cursor.getLong(3));
+            diary.setMonth(cursor.getInt(4));
+            diary.setYear(cursor.getInt(5));
+            diary.setDay(cursor.getInt(6));
+            DIARYS_TABLE.add(diary);
+            cursor.moveToNext();
+        }
+
+        cursor.close();
+        return DIARYS_TABLE;
+    }
+    /**
+     * 진짜 모든 Diary 데이터 가져오기
      * @return 모든 Diary 데이터
      */
     public ArrayList<Diary> getAllDiary() {

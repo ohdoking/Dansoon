@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="backup_list" > '
+        <item>백업 하기</item>
+        <item>백업 데이터 불러오기</item>
+        <item>백업 데이터 메일로 보내기</item>
+    </string-array>
+</resources>

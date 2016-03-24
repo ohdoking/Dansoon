@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="316dp"
+    android:layout_height="155dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="41dp"
+        android:layout_marginLeft="80.5dp"
+        android:layout_marginRight="80.5dp"
+        android:layout_marginTop="48dp"
+        android:textSize="19sp"
+        android:textColor="#7a7a7a"
+        android:text="@string/confirm_delete"/>
+
+    <!--<LinearLayout
+        android:layout_width="318dp"
+        android:layout_height="44dp">
+
+        <Button
+            android:id="@+id/cancelBtn"
+            android:layout_width="158dp"
+            android:textAlignment="center"
+            android:background="#ffffff"
+            android:text="취소"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:id="@+id/okBtn"
+            android:layout_width="158dp"
+            android:textAlignment="center"
+            android:background="@drawable/button_effect"
+            android:text="확인"
+            android:layout_height="match_parent" />
+    </LinearLayout>-->
+
+</LinearLayout>
