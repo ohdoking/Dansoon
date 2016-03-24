@@ -108,6 +108,13 @@ public class SettingActivity extends BaseAppCompatActivity {
         sendRecommand.setOnClickListener(mClickListener);
         sendFighting.setOnClickListener(mClickListener);
 
+        backup.setOnTouchListener(settingTouchListenr);
+        changePw.setOnTouchListener(settingTouchListenr);
+        lockSetting.setOnTouchListener(settingTouchListenr);
+        sendEmail.setOnTouchListener(settingTouchListenr);
+        sendRecommand.setOnTouchListener(settingTouchListenr);
+        sendFighting.setOnTouchListener(settingTouchListenr);
+
         moveList.setOnTouchListener(menuTouchListenr);
 
         dataSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -207,7 +214,14 @@ public class SettingActivity extends BaseAppCompatActivity {
                     startActivity(i);
                     break;
                 case R.id.layout_locksetting:
-
+                    if(!dataSwitch.isChecked()){
+                        saveUsingPassword(true);
+                        dataSwitch.setChecked(true);
+                    }
+                    else{
+                        saveUsingPassword(false);
+                        dataSwitch.setChecked(false);
+                    }
                     break;
                 case R.id.layout_ask:
 

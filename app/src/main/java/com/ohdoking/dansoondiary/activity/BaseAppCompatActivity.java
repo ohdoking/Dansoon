@@ -2,11 +2,14 @@ package com.ohdoking.dansoondiary.activity;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
 import android.graphics.Rect;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.ohdoking.dansoondiary.R;
 import com.tsengvn.typekit.TypekitContextWrapper;
@@ -53,6 +56,30 @@ public class BaseAppCompatActivity extends AppCompatActivity {
             if(event.getAction() == MotionEvent.ACTION_MOVE){
                 if(!rect.contains(v.getLeft() + (int) event.getX(), v.getTop() + (int) event.getY())){
                     ((ImageView)v).setColorFilter(Color.argb(0, 0, 0, 0));
+                }
+            }
+            return false;
+        }
+    };
+
+    View.OnTouchListener settingTouchListenr = new View.OnTouchListener() {
+        private Rect rect;
+
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+
+            PorterDuffColorFilter greyFilter = new PorterDuffColorFilter(Color.argb(50, 0, 0, 0), PorterDuff.Mode.MULTIPLY);
+            PorterDuffColorFilter whiteFilter = new PorterDuffColorFilter(Color.argb(0, 0, 0, 0), PorterDuff.Mode.MULTIPLY);
+            if(event.getAction() == MotionEvent.ACTION_DOWN){
+                ((RelativeLayout)v).setBackgroundColor(Color.argb(50, 0, 0, 0));//.setColorFilter(greyFilter);
+                rect = new Rect(v.getLeft(), v.getTop(), v.getRight(), v.getBottom());
+            }
+            if(event.getAction() == MotionEvent.ACTION_UP){
+                ((RelativeLayout)v).setBackgroundColor(Color.argb(0, 0, 0, 0));//.setColorFilter(whiteFilter);
+            }
+            if(event.getAction() == MotionEvent.ACTION_MOVE){
+                if(!rect.contains(v.getLeft() + (int) event.getX(), v.getTop() + (int) event.getY())){
+                    ((RelativeLayout)v).setBackgroundColor(Color.argb(0, 0, 0, 0));
                 }
             }
             return false;
