@@ -1,6 +1,7 @@
 package com.ohdoking.dansoondiary.activity;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import com.ohdoking.dansoondiary.R;
 import com.ohdoking.dansoondiary.dao.DiaryDao;
 import com.ohdoking.dansoondiary.dto.Diary;
+import com.ohdoking.dansoondiary.service.CustomProgressDialog;
 import com.ohdoking.dansoondiary.service.DiaryRecyclerAdapter;
 import com.ohdoking.dansoondiary.service.OnSwipeTouchListener;
 import com.ohdoking.dansoondiary.service.RecyclerItemClickListener;
@@ -40,8 +42,7 @@ public class MainListActivity extends BaseAppCompatActivity {
 
     Calendar listCurrentCalendar;
 
-
-
+    CustomProgressDialog pDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +52,8 @@ public class MainListActivity extends BaseAppCompatActivity {
         setSupportActionBar(toolbar);
         initId();
         diarysList = new ArrayList<Diary>();
+
+        pDialog = new CustomProgressDialog(MainListActivity.this);
 
         setDateInView();
         setRecyclerView();
@@ -69,6 +72,12 @@ public class MainListActivity extends BaseAppCompatActivity {
         super.onResume();
         setDateInView();
         adapter.swap(diarysList);
+    }
+
+    @Override
+    protected void onStop() {
+        hidepDialog();
+        super.onStop();
     }
 
     /**
@@ -155,13 +164,22 @@ public class MainListActivity extends BaseAppCompatActivity {
         moveList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                pDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                showpDialog();
+
                 Intent intent = new Intent(MainListActivity.this, MainActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
         moveSetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                pDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                showpDialog();
+
                 Intent intent = new Intent(MainListActivity.this, SettingActivity.class);
                 startActivity(intent);
 
@@ -170,6 +188,10 @@ public class MainListActivity extends BaseAppCompatActivity {
         moveStatic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                pDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                showpDialog();
+                
                 Intent intent = new Intent(MainListActivity.this, StaticsActivity.class);
                 startActivity(intent);
             }
@@ -239,6 +261,16 @@ public class MainListActivity extends BaseAppCompatActivity {
             default:
                 break;
         }
+    }
+
+    private void showpDialog() {
+        if (!pDialog.isShowing())
+            pDialog.show();
+    }
+
+    private void hidepDialog() {
+        if (pDialog.isShowing())
+            pDialog.dismiss();
     }
 
 }

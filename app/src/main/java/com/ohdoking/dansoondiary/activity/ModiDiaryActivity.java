@@ -85,20 +85,20 @@ public class ModiDiaryActivity extends BaseAppCompatActivity {
                 Integer imageValue = diary.getImage().get(image);
                 Log.i("ohdoking4",imageValue+"");
                 if(image == 0 && imageValue != null){
-                    imageView1.setImageResource(DsStatic.buttonList[imageValue]);
-                    imageView1.setTag(DsStatic.buttonList[imageValue]);
+                    imageView1.setImageResource(DsStatic.buttonList46p5[imageValue]);
+                    imageView1.setTag(DsStatic.buttonList46p5[imageValue]);
                 }
                 else if(image == 1 && imageValue != null){
-                    imageView2.setImageResource(DsStatic.buttonList[imageValue]);
-                    imageView2.setTag(DsStatic.buttonList[imageValue]);
+                    imageView2.setImageResource(DsStatic.buttonList46p5[imageValue]);
+                    imageView2.setTag(DsStatic.buttonList46p5[imageValue]);
                 }
                 else if(image == 2 && imageValue != null){
-                    imageView3.setImageResource(DsStatic.buttonList[imageValue]);
-                    imageView3.setTag(DsStatic.buttonList[imageValue]);
+                    imageView3.setImageResource(DsStatic.buttonList46p5[imageValue]);
+                    imageView3.setTag(DsStatic.buttonList46p5[imageValue]);
                 }
                 else if(image == 3 && imageValue != null){
-                    imageView4.setImageResource(DsStatic.buttonList[imageValue]);
-                    imageView4.setTag(DsStatic.buttonList[imageValue]);
+                    imageView4.setImageResource(DsStatic.buttonList46p5[imageValue]);
+                    imageView4.setTag(DsStatic.buttonList46p5[imageValue]);
                 }
             }
 
@@ -188,7 +188,7 @@ public class ModiDiaryActivity extends BaseAppCompatActivity {
 
         moveList.setOnTouchListener(menuTouchListenr);
 //        modiDiary.setOnTouchListener(menuTouchListenr);
-        modiIcon.setOnTouchListener(menuTouchListenr);
+//        modiIcon.setOnTouchListener(Touch);
     }
 
     void initId(){
@@ -213,7 +213,7 @@ public class ModiDiaryActivity extends BaseAppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         switch (resultCode) {
-            case 1:
+            case DsStatic.CHANGE:
                 ArrayList<Integer> imageList = new ArrayList<Integer>();
                 int size = data.getExtras().getInt("selectImagesize");
                 for(int j = 0;j < size;j++){
@@ -223,29 +223,29 @@ public class ModiDiaryActivity extends BaseAppCompatActivity {
                 }
 
                 diary.setImage(imageList);
-                imageView1.setImageResource(DsStatic.buttonList[1]);
-                imageView2.setImageResource(DsStatic.buttonList[1]);
-                imageView3.setImageResource(DsStatic.buttonList[1]);
-                imageView4.setImageResource(DsStatic.buttonList[1]);
+                imageView1.setImageResource(DsStatic.buttonList46p5[1]);
+                imageView2.setImageResource(DsStatic.buttonList46p5[1]);
+                imageView3.setImageResource(DsStatic.buttonList46p5[1]);
+                imageView4.setImageResource(DsStatic.buttonList46p5[1]);
 
                 for(Integer image = 0; image < diary.getImage().size() ; image++){
                     Integer imageValue = diary.getImage().get(image);
                     Log.i("ohdoking4",imageValue+"");
                     if(image == 0 && imageValue != null){
-                        imageView1.setImageResource(DsStatic.buttonList[imageValue]);
-                        imageView1.setTag(DsStatic.buttonList[imageValue]);
+                        imageView1.setImageResource(DsStatic.buttonList46p5[imageValue]);
+                        imageView1.setTag(DsStatic.buttonList46p5[imageValue]);
                     }
                     else if(image == 1 && imageValue != null){
-                        imageView2.setImageResource(DsStatic.buttonList[imageValue]);
-                        imageView2.setTag(DsStatic.buttonList[imageValue]);
+                        imageView2.setImageResource(DsStatic.buttonList46p5[imageValue]);
+                        imageView2.setTag(DsStatic.buttonList46p5[imageValue]);
                     }
                     else if(image == 2 && imageValue != null){
-                        imageView3.setImageResource(DsStatic.buttonList[imageValue]);
-                        imageView3.setTag(DsStatic.buttonList[imageValue]);
+                        imageView3.setImageResource(DsStatic.buttonList46p5[imageValue]);
+                        imageView3.setTag(DsStatic.buttonList46p5[imageValue]);
                     }
                     else if(image == 3 && imageValue != null){
-                        imageView4.setImageResource(DsStatic.buttonList[imageValue]);
-                        imageView4.setTag(DsStatic.buttonList[imageValue]);
+                        imageView4.setImageResource(DsStatic.buttonList46p5[imageValue]);
+                        imageView4.setTag(DsStatic.buttonList46p5[imageValue]);
                     }
 
                     if(imageValue == null){

@@ -7,6 +7,7 @@ import java.util.Comparator;
  */
 public class DsIcon {
     private Integer icon;
+    private Integer id;
     private Integer count;
 
     public Integer getIcon() {
@@ -23,6 +24,14 @@ public class DsIcon {
 
     public void setCount(Integer count) {
         this.count = count;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     /*Comparator for sorting the list by roll no*/

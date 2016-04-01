@@ -83,7 +83,7 @@ public class CaldroidSampleCustomAdapter extends CaldroidGridAdapter {
 
 			DateTime dateTime2 = CalendarHelper.convertDateToDateTime(tempTime);
 			if(dateTime2.equals(dateTime)){
-				tv2.setImageResource(DsStatic.buttonList[diary.getImage().get(0)]);
+				tv2.setImageResource(DsStatic.buttonList46p5[diary.getImage().get(0)]);
 			}
 		}
 

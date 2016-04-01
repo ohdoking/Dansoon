@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,8 +38,31 @@ public class GridImageAdapter extends BaseAdapter {
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
-
         Integer imageNum = imageArrayList.get(position);
+
+        Holder holder = null;
+        if(convertView==null){
+            LayoutInflater vi = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = vi.inflate(R.layout.gridview_item, null);
+            holder = new Holder();
+            holder.image =(ImageView) convertView.findViewById(R.id.grid_item_image);
+            convertView.setTag(holder);
+        }else{
+            holder = (Holder)convertView.getTag();
+        }
+
+        holder.image.setImageResource(DsStatic.buttonList44Rev[imageNum]);
+
+        if(alreadyImageArrayList != null){
+            for(Integer img:alreadyImageArrayList){
+                if(imageNum.equals(img)){
+                    holder.image.setImageResource(DsStatic.buttonList44[img]);
+                }
+            }
+        }
+        return convertView;
+
+        /*Integer imageNum = imageArrayList.get(position);
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
@@ -54,13 +76,13 @@ public class GridImageAdapter extends BaseAdapter {
             ImageView imageView = (ImageView) gridView
                     .findViewById(R.id.grid_item_image);
             Log.i("ohdoking1234",imageNum+"");
-            imageView.setImageResource(DsStatic.buttonList[imageNum]);
+            imageView.setImageResource(DsStatic.buttonList44Rev[imageNum]);
 
             if(alreadyImageArrayList != null){
                 for(Integer img:alreadyImageArrayList){
 
                     if(imageNum.equals(img)){
-                        imageView.setImageResource(DsStatic.buttonListRev[img]);
+                        imageView.setImageResource(DsStatic.buttonList44[img]);
                     }
                 }
             }
@@ -69,9 +91,9 @@ public class GridImageAdapter extends BaseAdapter {
 
         } else {
             gridView = (View) convertView;
-        }
+        }*/
 
-        return gridView;
+//        return gridView;
     }
 
     public void addAlreadyListView(ArrayList<Integer> images){
@@ -124,6 +146,10 @@ public class GridImageAdapter extends BaseAdapter {
     @Override
     public long getItemId(int position) {
         return position;
+    }
+
+    public static class Holder{
+        public ImageView image;
     }
 
 }

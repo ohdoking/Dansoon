@@ -38,7 +38,7 @@ public class SplashActivity extends Activity {
                      */
                     if(getVisitState()){
                         intent.putExtra(DsStatic.PASSWORDSATE,DsStatic.SETPASSWORD);
-                        setVisitState(false);
+//                        setVisitState(false);
                         saveUsingPassword(false);
                     }
                     else{

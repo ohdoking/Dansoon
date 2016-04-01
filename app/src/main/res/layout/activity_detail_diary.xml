@@ -23,8 +23,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
-                android:padding="35px"
-                android:paddingStart="0px"
+                android:paddingTop="14dp"
+                android:paddingBottom ="16dp"
                 android:weightSum="1">
 
                 <!-- This is a centered logo -->
@@ -34,22 +34,24 @@
                     android:src="@drawable/back_icon"
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="25dp"/>
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_weight="0.9"
-                    android:textSize="10pt"
+                    android:textSize="21sp"
                     android:textStyle="bold"
                     android:textAlignment="textStart"
-                    android:layout_marginLeft="10px"
                     android:gravity="center_vertical"
-                    android:layout_height="fill_parent"
+                    android:paddingTop="1dp"
+                    android:paddingStart="13dp"
+                    android:layout_height="25dp"
+                    android:textColor="#ffffff"
                     android:text="@string/title_show_today"/>
 
             </LinearLayout>
-            </android.support.v7.widget.Toolbar>
 
+        </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
 

@@ -70,9 +70,9 @@ public class WriteDiaryActivity extends BaseAppCompatActivity {
                 if (size != 0) {
                     for (int j = 0; j < size; j++) {
                         Integer tempImage = intent2.getIntExtra("image" + j, 1);
-                        for (int z = 0; z < DsStatic.buttonList.length; z++) {
-                            if (tempImage.equals(DsStatic.buttonList[z])) {
-                                Log.i("ohdoking3", "checked : " + DsStatic.buttonList[z]);
+                        for (int z = 0; z < DsStatic.buttonList44Rev.length; z++) {
+                            if (tempImage.equals(DsStatic.buttonList44Rev[z])) {
+                                Log.i("ohdoking3", "checked : " + DsStatic.buttonList44Rev[z]);
                             }
                         }
                         alreadySelectedArrayList.add(tempImage);
@@ -132,7 +132,7 @@ public class WriteDiaryActivity extends BaseAppCompatActivity {
         gridView.setAdapter(gridImageAdapter);
 
         favoriteIconArrayList = new ArrayList<Integer>();
-        for(int i = 2; i < DsStatic.buttonList.length ; i++){
+        for(int i = 2; i < DsStatic.buttonList44Rev.length ; i++){
             favoriteIconArrayList.add(i);
             gridImageAdapter.addImage(i);
         }
@@ -176,11 +176,11 @@ public class WriteDiaryActivity extends BaseAppCompatActivity {
 //                Log.i("ohdoking7",gridImageAdapter.getCount()+" : "+gridImageAdapter.getItem(position));
 
                 if(hasDuplicates(gridImageAdapter.getItem(position))){
-                    image.setImageResource(DsStatic.buttonList[realPosition]);
+                    image.setImageResource(DsStatic.buttonList44Rev[realPosition]);
                     Integer temp = gridImageAdapter.getItem(position);
                     for(int i = 0; i < selectArrayList.size() ; i++) {
-                        Log.i("test123",selectArrayList.get(i) +"=="+ temp);
-                        if(selectArrayList.get(i) == temp){
+                        Log.i("test123",selectArrayList.get(i) +"=="+ realPosition);
+                        if(selectArrayList.get(i) == realPosition){
                             selectArrayList.remove(i);
                             i--;
                         }
@@ -189,7 +189,7 @@ public class WriteDiaryActivity extends BaseAppCompatActivity {
                 }
                 else{
                     if(counter < 4 ) {
-                        image.setImageResource(DsStatic.buttonListRev[realPosition]);
+                        image.setImageResource(DsStatic.buttonList44[realPosition]);
                         selectArrayList.add(realPosition);
                         counter++;
                     }
@@ -255,7 +255,7 @@ public class WriteDiaryActivity extends BaseAppCompatActivity {
                     }
 
 
-                    setResult(DsStatic.NOCHANGE, intent2);
+                    setResult(DsStatic.CHANGE, intent2);
                     finish();
                 }
                 else{
@@ -311,7 +311,7 @@ public class WriteDiaryActivity extends BaseAppCompatActivity {
     public ArrayList<Integer> getFavoritesIcon(){
         ArrayList<Integer> iconList;
         SharedPreferences pref = getSharedPreferences(DsStatic.ICONTABLE, MODE_PRIVATE);
-        String iconListString =  pref.getString(DsStatic.FAVORITEICON,"[2]");
+        String iconListString =  pref.getString(DsStatic.FAVORITEICON,"[]");
         if (!iconListString.equals("")) {
             Gson gson = new Gson();
             Type type = new TypeToken<ArrayList<Integer>>() {}.getType();

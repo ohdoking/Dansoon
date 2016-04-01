@@ -132,16 +132,16 @@ public class DetailDiaryActivity extends BaseAppCompatActivity {
                     Log.i("ohdoking2",imageValue+"");
 
                     if(image == 0 && imageValue != null){
-                        imageView1.setImageResource(DsStatic.buttonList[imageValue]);
+                        imageView1.setImageResource(DsStatic.buttonList69[imageValue]);
                     }
                     else if(image == 1 && imageValue != null){
-                        imageView2.setImageResource(DsStatic.buttonList[imageValue]);
+                        imageView2.setImageResource(DsStatic.buttonList69[imageValue]);
                     }
                     else if(image == 2 && imageValue != null){
-                        imageView3.setImageResource(DsStatic.buttonList[imageValue]);
+                        imageView3.setImageResource(DsStatic.buttonList69[imageValue]);
                     }
                     else if(image == 3 && imageValue != null){
-                        imageView4.setImageResource(DsStatic.buttonList[imageValue]);
+                        imageView4.setImageResource(DsStatic.buttonList69[imageValue]);
                     }
                 }
                 String editString = diary.getMemo().toString();
@@ -305,6 +305,10 @@ public class DetailDiaryActivity extends BaseAppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         switch (resultCode) {
+            case DsStatic.CHANGE:
+                finish();
+                break;
+
             case DsStatic.NOCHANGE:
                 finish();
                 break;
@@ -387,31 +391,33 @@ public class DetailDiaryActivity extends BaseAppCompatActivity {
 
             time.setText(c.get(Calendar.HOUR)+":"+c.get(Calendar.MINUTE));
 
-            imageView1.setImageResource(DsStatic.buttonList[1]);
-            imageView2.setImageResource(DsStatic.buttonList[1]);
-            imageView3.setImageResource(DsStatic.buttonList[1]);
-            imageView4.setImageResource(DsStatic.buttonList[1]);
+            imageView1.setImageResource(DsStatic.buttonList69[1]);
+            imageView2.setImageResource(DsStatic.buttonList69[1]);
+            imageView3.setImageResource(DsStatic.buttonList69[1]);
+            imageView4.setImageResource(DsStatic.buttonList69[1]);
             for(Integer image = 0; image < changeDiary.getImage().size() ; image++){
 
                 Integer imageValue = changeDiary.getImage().get(image);
                 Log.i("ohdoking2",imageValue+"");
 
                 if(image == 0 && imageValue != null){
-                    imageView1.setImageResource(DsStatic.buttonList[imageValue]);
+                    imageView1.setImageResource(DsStatic.buttonList69[imageValue]);
                 }
                 else if(image == 1 && imageValue != null){
-                    imageView2.setImageResource(DsStatic.buttonList[imageValue]);
+                    imageView2.setImageResource(DsStatic.buttonList69[imageValue]);
                 }
                 else if(image == 2 && imageValue != null){
-                    imageView3.setImageResource(DsStatic.buttonList[imageValue]);
+                    imageView3.setImageResource(DsStatic.buttonList69[imageValue]);
                 }
                 else if(image == 3 && imageValue != null){
-                    imageView4.setImageResource(DsStatic.buttonList[imageValue]);
+                    imageView4.setImageResource(DsStatic.buttonList69[imageValue]);
                 }
             }
-            String editString = diary.getMemo().toString();
+            String editString = changeDiary.getMemo().toString();
+            Log.i("test1234",editString);
             if(editString.equals("none")){
                 modiText.setHint("당신의 일상을 입력해주세요");
+                modiText.setText("");
             }
             else{
                 modiText.setText(editString);

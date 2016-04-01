@@ -98,7 +98,7 @@ public class IconListActivity extends BaseAppCompatActivity {
 
         gridView.setAdapter(gridImageAdapter);
 
-        for(int i = 2; i < DsStatic.buttonList.length ; i++){
+        for(int i = 2; i < DsStatic.buttonList44Rev.length ; i++){
             gridImageAdapter.addImage(i);
         }
 
@@ -120,7 +120,7 @@ public class IconListActivity extends BaseAppCompatActivity {
 
 
                 if(hasDuplicates(gridImageAdapter.getItem(position))){
-                    image.setImageResource(DsStatic.buttonList[RealPosition]);
+                    image.setImageResource(DsStatic.buttonList44Rev[RealPosition]);
                     Integer temp = gridImageAdapter.getItem(position);
 
                     for(int i = 0; i < selectArrayList.size() ; i++) {
@@ -133,7 +133,7 @@ public class IconListActivity extends BaseAppCompatActivity {
                     counter--;
                 }
                 else{
-                    image.setImageResource(DsStatic.buttonListRev[RealPosition]);
+                    image.setImageResource(DsStatic.buttonList44[RealPosition]);
                     selectArrayList.add(RealPosition);
                     counter++;
                 }
@@ -154,7 +154,14 @@ public class IconListActivity extends BaseAppCompatActivity {
             public void onClick(View v) {
 
                 saveFavoritesIcon(selectArrayList);
-                Intent intent = new Intent(IconListActivity.this, WriteDiaryActivity.class);
+                Intent intent;
+                if(getVisitState()){
+                    setVisitState(false);
+                    intent = new Intent(IconListActivity.this, MainListActivity.class);
+                }
+                else{
+                    intent = new Intent(IconListActivity.this, WriteDiaryActivity.class);
+                }
                 startActivity(intent);
                 finish();
             }

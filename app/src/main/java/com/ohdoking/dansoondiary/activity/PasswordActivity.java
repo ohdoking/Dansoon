@@ -2,13 +2,12 @@ package com.ohdoking.dansoondiary.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
 import com.ohdoking.dansoondiary.R;
 
-public class PasswordActivity extends AppCompatActivity {
+public class PasswordActivity extends BaseAppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,8 +19,15 @@ public class PasswordActivity extends AppCompatActivity {
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(PasswordActivity.this,MainListActivity.class);
+                Intent i;
+                if(getVisitState()){
+                    i = new Intent(PasswordActivity.this,IconListActivity.class);
+                }
+                else{
+                    i = new Intent(PasswordActivity.this,MainListActivity.class);
+                }
                 startActivity(i);
+                finish();
             }
         });
 

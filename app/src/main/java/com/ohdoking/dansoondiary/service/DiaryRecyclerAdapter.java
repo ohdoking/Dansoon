@@ -73,16 +73,16 @@ public class DiaryRecyclerAdapter extends RecyclerView.Adapter<DiaryViewHolder> 
             Integer imageValue = diaryItem.getImage().get(image);
             Log.i("ohdoking2",String.valueOf(imageValue));
             if(image == 0 && imageValue != null){
-                diaryViewHolder.iconView1.setImageResource(DsStatic.buttonList[imageValue]);
+                diaryViewHolder.iconView1.setImageResource(DsStatic.buttonList46p5[imageValue]);
             }
             else if(image == 1 && imageValue != null){
-                diaryViewHolder.iconView2.setImageResource(DsStatic.buttonList[imageValue]);
+                diaryViewHolder.iconView2.setImageResource(DsStatic.buttonList46p5[imageValue]);
             }
             else if(image == 2 && imageValue != null){
-                diaryViewHolder.iconView3.setImageResource(DsStatic.buttonList[imageValue]);
+                diaryViewHolder.iconView3.setImageResource(DsStatic.buttonList46p5[imageValue]);
             }
             else if(image == 3 && imageValue != null){
-                diaryViewHolder.iconView4.setImageResource(DsStatic.buttonList[imageValue]);
+                diaryViewHolder.iconView4.setImageResource(DsStatic.buttonList46p5[imageValue]);
             }
         }
 

@@ -1,32 +1,33 @@
 package com.ohdoking.dansoondiary.activity;
 
+import android.content.res.Resources;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.SpannableString;
-import android.text.style.ForegroundColorSpan;
 import android.text.style.RelativeSizeSpan;
-import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.github.mikephil.charting.animation.Easing;
-import com.github.mikephil.charting.charts.HorizontalBarChart;
-import com.github.mikephil.charting.charts.PieChart;
-import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.charts.CustomHorizontalBarChart;
+import com.github.mikephil.charting.charts.CustomPieChart;
+import com.github.mikephil.charting.components.CustomXAxis;
 import com.github.mikephil.charting.components.YAxis;
-import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.CustomBarData;
+import com.github.mikephil.charting.data.CustomPieData;
 import com.github.mikephil.charting.data.Entry;
-import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
-import com.github.mikephil.charting.utils.ColorTemplate;
 import com.ohdoking.dansoondiary.R;
 import com.ohdoking.dansoondiary.common.DsStatic;
 import com.ohdoking.dansoondiary.dao.DiaryDao;
@@ -43,8 +44,8 @@ import hirondelle.date4j.DateTime;
 
 public class StaticsActivity extends BaseAppCompatActivity implements OnChartValueSelectedListener {
 
-    private PieChart mChart;
-    protected HorizontalBarChart barChart;
+    private CustomPieChart mChart;
+    protected CustomHorizontalBarChart barChart;
 
     private Typeface tf;
     ImageView moveList;
@@ -89,7 +90,6 @@ public class StaticsActivity extends BaseAppCompatActivity implements OnChartVal
             Log.i("ohdoking5",ds.getIcon()+" : " + ds.getCount());
         }
 
-        initIconRank();
 
         moveList.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,31 +99,43 @@ public class StaticsActivity extends BaseAppCompatActivity implements OnChartVal
         });
         moveList.setOnTouchListener(menuTouchListenr);
 
-        initIconRank();
-        initPieChart();
-        initBarChart();
+        if(diarysList.size() != 0){
+            initIconRank();
+            initPieChart();
+//            initBarChart();
+        }
 
     }
 
     void initIconRank(){
         //icon top 3 init
-        topIcon.setImageResource(DsStatic.buttonList[iconList.get(0).getIcon()]);
-        secIcon.setImageResource(DsStatic.buttonList[iconList.get(1).getIcon()]);
-        thirdIcon.setImageResource(DsStatic.buttonList[iconList.get(2).getIcon()]);
+
+        for(int i=0 ; i < diarysList.size() ; i++){
+
+            if(i == 0){
+                topIcon.setImageResource(DsStatic.buttonList69[iconList.get(0).getIcon()]);
+            }
+            else if(i == 1){
+                secIcon.setImageResource(DsStatic.buttonList69[iconList.get(1).getIcon()]);
+            }
+            else if(i == 2){
+                thirdIcon.setImageResource(DsStatic.buttonList69[iconList.get(2).getIcon()]);
+            }
+        }
     }
 
     /**
      * PieChart 초기화
      */
     void initPieChart(){
-        mChart = (PieChart) findViewById(R.id.chart1);
+        mChart = (CustomPieChart) findViewById(R.id.chart1);
 
         tf = Typeface.createFromAsset(getAssets(), "fonts/thejunggodic.ttf");
 
         mChart.setCenterTextTypeface(Typeface.createFromAsset(getAssets(), "fonts/thejunggodic130.ttf"));
         mChart.setCenterText(generateCenterSpannableText());
 
-        mChart.setCenterText(tempdate.getYear().toString()+"년\n"+tempdate.getMonth().toString()+"월");
+       // mChart.setCenterText(tempdate.getYear().toString()+"년\n"+tempdate.getMonth().toString()+"월");
         mChart.setCenterTextSize(30f);
         mChart.setDescription("");
         /*mChart.setDescription(tempdate.getMonth().toString()+"월");
@@ -138,13 +150,12 @@ public class StaticsActivity extends BaseAppCompatActivity implements OnChartVal
         mChart.setDrawHoleEnabled(true);
 //        mChart.setHoleColor(Color.TRANSPARENT);
 
-        mChart.setHoleColorTransparent(true);
+//        mChart.setHoleColorTransparent(true);
         /*
         mChart.setTransparentCircleColor(Color.WHITE);
         mChart.setTransparentCircleAlpha(110);*/
-        mChart.setHoleRadius(53f);
-        mChart.setTransparentCircleRadius(61f);
-
+        mChart.setHoleRadius(60f);
+        mChart.setTransparentCircleRadius(60f);
         mChart.setDrawCenterText(true);
 
         mChart.setRotationAngle(0);
@@ -176,7 +187,7 @@ public class StaticsActivity extends BaseAppCompatActivity implements OnChartVal
      * BarChart 초기화
      */
     void initBarChart(){
-        barChart = (HorizontalBarChart) findViewById(R.id.barchart);
+//        barChart = (CustomHorizontalBarChart) findViewById(R.id.barchart);
 //        barChart.setOnChartValueSelectedListener(this);
         // mChart.setHighlightEnabled(false);
 
@@ -203,8 +214,8 @@ public class StaticsActivity extends BaseAppCompatActivity implements OnChartVal
 
 //        tf = Typeface.createFromAsset(getAssets(), "OpenSans-Regular.ttf");
 
-        XAxis xl = barChart.getXAxis();
-        xl.setPosition(XAxis.XAxisPosition.BOTTOM);
+        CustomXAxis xl = barChart.getXAxis();
+        xl.setPosition(CustomXAxis.CustomXAxisPosition.BOTTOM);
         xl.setTypeface(tf);
         xl.setDrawAxisLine(false);
         xl.setDrawGridLines(false);
@@ -248,7 +259,7 @@ public class StaticsActivity extends BaseAppCompatActivity implements OnChartVal
     private void setBarChartData(int count, float range) {
 
         ArrayList<BarEntry> yVals1 = new ArrayList<BarEntry>();
-        ArrayList<String> xVals = new ArrayList<String>();
+        ArrayList<Bitmap> xVals = new ArrayList<Bitmap>();
 
         /*for (int i = 0; i < count; i++) {
             xVals.add(mMonths[i % 12]);
@@ -257,16 +268,26 @@ public class StaticsActivity extends BaseAppCompatActivity implements OnChartVal
 
         ArrayList<DsIcon> barCharList = iconList;
         Collections.reverse(barCharList);
-        for(int i = 0 ; i < barCharList.size() ; i++){
+        /*for(int i = 0 ; i < barCharList.size() ; i++){
             yVals1.add(new BarEntry(barCharList.get(i).getCount(), i));
             xVals.add(mParties[i % mParties.length]);
+        }*/
+
+        ArrayList<Integer> colors = new ArrayList<Integer>();
+        for(int i = 0 ; i < barCharList.size() ; i++){
+            yVals1.add(new BarEntry(barCharList.get(i).getCount(), i));
+            colors.add(DsStatic.buttonColor[barCharList.get(i).getIcon()]);
+            Resources res = getResources();
+            BitmapDrawable bd = (BitmapDrawable)res.getDrawable(DsStatic.buttonList69[barCharList.get(i).getIcon()]);
+            Bitmap bit = bd.getBitmap();
+            xVals.add(bit);
         }
 
 
         BarDataSet set1 = new BarDataSet(yVals1, "");
-        ArrayList<Integer> colors = new ArrayList<Integer>();
 
-        for (int c : ColorTemplate.VORDIPLOM_COLORS)
+
+        /*for (int c : ColorTemplate.VORDIPLOM_COLORS)
             colors.add(c);
 
         for (int c : ColorTemplate.JOYFUL_COLORS)
@@ -280,16 +301,16 @@ public class StaticsActivity extends BaseAppCompatActivity implements OnChartVal
 
         for (int c : ColorTemplate.PASTEL_COLORS)
             colors.add(c);
-
-        colors.add(ColorTemplate.getHoloBlue());
+*/
+//        colors.add(ColorTemplate.getHoloBlue());
 
         set1.setColors(colors);
 
         ArrayList<IBarDataSet> dataSets = new ArrayList<IBarDataSet>();
         dataSets.add(set1);
 
-        BarData data = new BarData(xVals, dataSets);
-        data.setValueTextSize(10f);
+        CustomBarData data = new CustomBarData(xVals, dataSets);
+        data.setValueTextSize(30f);
         data.setValueTypeface(tf);
 
         barChart.setData(data);
@@ -318,16 +339,29 @@ public class StaticsActivity extends BaseAppCompatActivity implements OnChartVal
 */
 
 
-        ArrayList<String> xVals = new ArrayList<String>();
+        ArrayList<Bitmap> xVals = new ArrayList<Bitmap>();
 
 /*
         for (int i = 0; i < count + 1; i++)
             xVals.add(mParties[i % mParties.length]);
 */
 
-        for(int i = 0 ; i < iconList.size() ; i++){
+        ArrayList<DsIcon> barCharList = iconList;
+        ArrayList<Integer> colors = new ArrayList<Integer>();
+
+
+        Integer iconSize = iconList.size();
+        if(iconSize > 10){
+            iconSize = 10;
+        }
+
+        for(int i = 0 ; i < iconSize ; i++){
             yVals1.add(new Entry(iconList.get(i).getCount(), i));
-            xVals.add(mParties[i % mParties.length]);
+            colors.add(DsStatic.buttonColor[iconList.get(i).getIcon()]);
+            Resources res = getResources();
+            BitmapDrawable bd = (BitmapDrawable)res.getDrawable(DsStatic.buttonList69[iconList.get(i).getIcon()]);
+            Bitmap bit = bd.getBitmap();
+            xVals.add(bit);
         }
 
         PieDataSet dataSet = new PieDataSet(yVals1, "");
@@ -336,9 +370,9 @@ public class StaticsActivity extends BaseAppCompatActivity implements OnChartVal
 
         // add a lot of colors
 
-        ArrayList<Integer> colors = new ArrayList<Integer>();
 
-        for (int c : ColorTemplate.VORDIPLOM_COLORS)
+
+       /* for (int c : ColorTemplate.VORDIPLOM_COLORS)
             colors.add(c);
 
         for (int c : ColorTemplate.JOYFUL_COLORS)
@@ -351,34 +385,34 @@ public class StaticsActivity extends BaseAppCompatActivity implements OnChartVal
             colors.add(c);
 
         for (int c : ColorTemplate.PASTEL_COLORS)
-            colors.add(c);
+            colors.add(c);*/
 
-        colors.add(ColorTemplate.getHoloBlue());
+//        colors.add(ColorTemplate.getHoloBlue());
 
         dataSet.setColors(colors);
         //dataSet.setSelectionShift(0f);
 
-        PieData data = new PieData(xVals, dataSet);
-//        data.setValueFormatter(new PercentFormatter());
+        CustomPieData data = new CustomPieData(xVals, dataSet);
+        data.setValueFormatter(new PercentFormatter());
         data.setValueTextSize(11f);
         data.setValueTextColor(Color.WHITE);
         mChart.setData(data);
 
         // undo all highlights
-        mChart.highlightValues(null);
+//        mChart.highlightValues(null);
 
         mChart.invalidate();
     }
 
     private SpannableString generateCenterSpannableText() {
 
-        SpannableString s = new SpannableString("MPAndroidChart\ndeveloped by Philipp Jahoda");
-        s.setSpan(new RelativeSizeSpan(1.7f), 0, 14, 0);
-        s.setSpan(new StyleSpan(Typeface.NORMAL), 14, s.length() - 15, 0);
-        s.setSpan(new ForegroundColorSpan(Color.GRAY), 14, s.length() - 15, 0);
-        s.setSpan(new RelativeSizeSpan(.8f), 14, s.length() - 15, 0);
-        s.setSpan(new StyleSpan(Typeface.ITALIC), s.length() - 14, s.length(), 0);
-        s.setSpan(new ForegroundColorSpan(ColorTemplate.getHoloBlue()), s.length() - 14, s.length(), 0);
+        SpannableString s = new SpannableString(tempdate.getYear().toString()+"년\n"+tempdate.getMonth().toString()+"월");
+        s.setSpan(new RelativeSizeSpan(.8f), 0, 4, 0);
+//        s.setSpan(new StyleSpan(Typeface.NORMAL), 14, s.length() - 15, 0);
+//        s.setSpan(new ForegroundColorSpan(Color.GRAY), 0, s.length() - 5, 0);
+        s.setSpan(new RelativeSizeSpan(1.4f), 5, 8, 0);
+//        s.setSpan(new StyleSpan(Typeface.ITALIC), s.length() - 14, s.length(), 0);
+//        s.setSpan(new ForegroundColorSpan(ColorTemplate.getHoloBlue()), s.length() - 14, s.length(), 0);
         return s;
     }
 

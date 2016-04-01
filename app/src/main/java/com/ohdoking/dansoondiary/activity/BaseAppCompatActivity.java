@@ -1,6 +1,7 @@
 package com.ohdoking.dansoondiary.activity;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
@@ -12,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.ohdoking.dansoondiary.R;
+import com.ohdoking.dansoondiary.common.DsStatic;
+import com.ohdoking.dansoondiary.service.CustomProgressDialog;
 import com.tsengvn.typekit.TypekitContextWrapper;
 
 /**
@@ -19,16 +22,8 @@ import com.tsengvn.typekit.TypekitContextWrapper;
  */
 public class BaseAppCompatActivity extends AppCompatActivity {
 
-    protected String[] mMonths = new String[] {
-            "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec"
-    };
 
-    protected String[] mParties = new String[] {
-            "ICON A", "ICON B", "ICON C", "ICON D", "ICON E", "ICON F", "ICON G", "ICON H",
-            "ICON I", "ICON J", "ICON K", "ICON L", "ICON M", "Party N", "Party O", "Party P",
-            "Party Q", "Party R", "Party S", "Party T", "Party U", "Party V", "Party W", "Party X",
-            "Party Y", "Party Z"
-    };
+    public CustomProgressDialog pDialog;
 
     @Override
     public void onBackPressed() {
@@ -85,4 +80,20 @@ public class BaseAppCompatActivity extends AppCompatActivity {
             return false;
         }
     };
+
+
+    // 값 불러오기
+    public boolean getVisitState(){
+        SharedPreferences pref = getSharedPreferences(DsStatic.USERINFO, MODE_PRIVATE);
+        return pref.getBoolean(DsStatic.VISITSTATE,true);
+    }
+
+    // 값 불러오기
+    public void setVisitState(boolean visit){
+        SharedPreferences pref = getSharedPreferences(DsStatic.USERINFO, MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putBoolean(DsStatic.VISITSTATE, visit);
+        editor.commit();
+    }
+
 }

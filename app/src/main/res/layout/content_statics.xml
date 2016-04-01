@@ -5,10 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:scrollbars="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.ohdoking.dansoondiary.activity.StaticsActivity"
     tools:showIn="@layout/activity_statics">
@@ -69,17 +65,44 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-
-                <TextView
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="29dp"
-                    android:text="이달의 아이콘 탑 3"
-                    android:textColor="#66c4b1"
-                    android:textSize="20sp" />
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="29dp"
+                        android:text="이달의"
+                        android:layout_marginLeft="17.5dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="3.5dp"
+                        android:textColor="#66c4b1"
+                        android:textSize="30sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="29dp"
+                        android:textStyle="bold"
+                        android:text="아이콘 TOP 3"
+                        android:layout_marginLeft="17.5dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="3.5dp"
+                        android:textColor="#66c4b1"
+                        android:textSize="30sp" />
+                </LinearLayout>
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.1dp"
+                    android:layout_marginLeft="17.5dp"
+                    android:layout_marginRight="17.5dp"
+                    android:background="#959494" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="11dp"
+                    android:layout_marginRight="43.5dp"
+                    android:layout_marginLeft="44dp"
+                    android:layout_marginTop="24dp"
                     android:orientation="horizontal">
 
                     <LinearLayout
@@ -89,29 +112,23 @@
 
                         <ImageView
                             android:id="@+id/top1"
-                            android:layout_width="200px"
-                            android:layout_height="200px"
-                            android:layout_marginEnd="50px"
-                            android:layout_marginStart="50px"
-                            android:layout_marginTop="50px"
-                            android:background="@drawable/c" />
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:layout_marginRight="31dp"
+                            android:background="@drawable/diary_null_icon" />
 
                         <ImageView
                             android:id="@+id/top2"
-                            android:layout_width="200px"
-                            android:layout_height="200px"
-                            android:layout_marginStart="100px"
-                            android:layout_marginTop="50px"
-                            android:background="@drawable/b" />
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:layout_marginRight="31dp"
+                            android:background="@drawable/diary_null_icon" />
 
                         <ImageView
                             android:id="@+id/top3"
-                            android:layout_width="200px"
-                            android:layout_height="200px"
-                            android:layout_marginEnd="50px"
-                            android:layout_marginStart="130px"
-                            android:layout_marginTop="50px"
-                            android:background="@drawable/a" />
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:background="@drawable/diary_null_icon" />
 
                     </LinearLayout>
                 </LinearLayout>
@@ -119,57 +136,95 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="48.5dp"
+                    android:layout_marginRight="48.5dp"
+                    android:layout_marginBottom="31dp"
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="150px"
-                        android:layout_height="100px"
-                        android:layout_marginStart="60px"
-                        android:layout_marginTop="50px"
+                        android:layout_width="61dp"
+                        android:layout_height="17dp"
                         android:background="@drawable/radius"
-                        android:paddingLeft="40px"
+                        android:layout_marginRight="40dp"
                         android:text="1위"
+                        android:textAlignment="center"
+                        android:textStyle="bold"
                         android:textColor="#ffffff"
-                        android:textSize="18sp" />
-
+                        android:textSize="14sp" />
                     <TextView
-                        android:layout_width="150px"
-                        android:layout_height="100px"
-                        android:layout_marginStart="210px"
-                        android:layout_marginTop="50px"
+                        android:layout_width="61dp"
+                        android:layout_height="17dp"
                         android:background="@drawable/radius"
-                        android:paddingLeft="45px"
+                        android:layout_marginRight="40dp"
+                        android:textAlignment="center"
                         android:text="2위"
+                        android:textStyle="bold"
                         android:textColor="#ffffff"
-                        android:textSize="18sp" />
-
+                        android:textSize="14sp" />
                     <TextView
-                        android:layout_width="150px"
-                        android:layout_height="100px"
-                        android:layout_marginStart="200px"
-                        android:layout_marginTop="50px"
+                        android:layout_width="61dp"
+                        android:layout_height="17dp"
                         android:background="@drawable/radius"
-                        android:paddingLeft="40px"
                         android:text="3위"
+                        android:textAlignment="center"
+                        android:textStyle="bold"
                         android:textColor="#ffffff"
-                        android:textSize="18sp" />
+                        android:textSize="14sp" />
                 </LinearLayout>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="50px"
-                    android:layout_marginTop="80px"
-                    android:background="@drawable/xml_blank" />
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.1dp"
+                    android:background="#959494" />
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="32dp"
+                    android:background="#f3f5f5" />
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.1dp"
+                    android:background="#959494" />
 
             </LinearLayout>
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:layout_marginTop="20px"
-                android:textColor="#66c4b1"
-                android:textSize="20sp"
-                android:text="@string/static_icon_count" />
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="29dp"
+                        android:text="이달의"
+                        android:layout_marginLeft="17.5dp"
+                        android:layout_marginTop="15dp"
+                        android:textColor="#66c4b1"
+                        android:textSize="30sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="29dp"
+                        android:textStyle="bold"
+                        android:text="@string/static_icon_count"
+                        android:layout_marginLeft="17.5dp"
+                        android:layout_marginTop="15dp"
+
+                        android:textColor="#66c4b1"
+                        android:textSize="30sp" />
+                </LinearLayout>
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.1dp"
+                    android:layout_marginLeft="17.5dp"
+                    android:layout_marginRight="17.5dp"
+                    android:background="#959494" />
+            </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -177,26 +232,26 @@
                 android:layout_marginTop="20px"
                 android:orientation="vertical">
 
-                <com.github.mikephil.charting.charts.PieChart
+                <com.github.mikephil.charting.charts.CustomPieChart
                     android:id="@+id/chart1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
 
 
             </LinearLayout>
-            <LinearLayout
+           <!-- <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="400dp"
                 android:layout_marginTop="20px"
                 android:orientation="vertical">
 
-                <com.github.mikephil.charting.charts.HorizontalBarChart
+                <com.github.mikephil.charting.charts.CustomHorizontalBarChart
                     android:id="@+id/barchart"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
 
 
-            </LinearLayout>
+            </LinearLayout>-->
 
         </LinearLayout>
 

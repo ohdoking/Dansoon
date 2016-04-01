@@ -17,13 +17,12 @@
             android:layout_height="?attr/actionBarSize"
             android:background="@color/colorAppMain"
             app:popupTheme="@style/AppTheme.PopupOverlay" >
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
-                android:padding="35px"
-                android:paddingStart="0px"
+                android:paddingTop="14dp"
+                android:paddingBottom ="16dp"
                 android:weightSum="1">
 
                 <!-- This is a centered logo -->
@@ -33,17 +32,19 @@
                     android:src="@drawable/calendar_icon"
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="25dp"/>
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_weight="0.6"
-                    android:textSize="10pt"
+                    android:textSize="21sp"
                     android:textStyle="bold"
                     android:textAlignment="textStart"
-                    android:layout_marginLeft="10px"
                     android:gravity="center_vertical"
-                    android:layout_height="fill_parent"
+                    android:paddingTop="1dp"
+                    android:paddingStart="13dp"
+                    android:layout_height="25dp"
+                    android:textColor="#ffffff"
                     android:text="@string/title_main_calendar"/>
 
                 <ImageView
@@ -51,13 +52,14 @@
                     android:layout_gravity="center"
                     android:layout_width="0dp"
                     android:layout_weight="0.15"
-                    android:layout_height="wrap_content"
+                    android:layout_height="25dp"
                     android:src="@drawable/static_icon"/>
                 <ImageView
                     android:id="@+id/moveSetting"
                     android:layout_gravity="center"
                     android:layout_width="0dp"
                     android:layout_weight="0.15"
+                    android:paddingEnd="15dp"
                     android:layout_height="wrap_content"
                     android:src="@drawable/setting_icon"/>
 
