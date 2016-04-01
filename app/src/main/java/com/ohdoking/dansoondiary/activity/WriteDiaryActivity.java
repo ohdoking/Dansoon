@@ -70,9 +70,9 @@ public class WriteDiaryActivity extends BaseAppCompatActivity {
                 if (size != 0) {
                     for (int j = 0; j < size; j++) {
                         Integer tempImage = intent2.getIntExtra("image" + j, 1);
-                        for (int z = 0; z < DsStatic.buttonList44Rev.length; z++) {
-                            if (tempImage.equals(DsStatic.buttonList44Rev[z])) {
-                                Log.i("ohdoking3", "checked : " + DsStatic.buttonList44Rev[z]);
+                        for (int z = 0; z < DsStatic.buttonList44.length; z++) {
+                            if (tempImage.equals(DsStatic.buttonList44[z])) {
+                                Log.i("ohdoking3", "checked : " + DsStatic.buttonList44[z]);
                             }
                         }
                         alreadySelectedArrayList.add(tempImage);
@@ -132,7 +132,7 @@ public class WriteDiaryActivity extends BaseAppCompatActivity {
         gridView.setAdapter(gridImageAdapter);
 
         favoriteIconArrayList = new ArrayList<Integer>();
-        for(int i = 2; i < DsStatic.buttonList44Rev.length ; i++){
+        for(int i = 2; i < DsStatic.buttonList44.length ; i++){
             favoriteIconArrayList.add(i);
             gridImageAdapter.addImage(i);
         }
@@ -176,12 +176,13 @@ public class WriteDiaryActivity extends BaseAppCompatActivity {
 //                Log.i("ohdoking7",gridImageAdapter.getCount()+" : "+gridImageAdapter.getItem(position));
 
                 if(hasDuplicates(gridImageAdapter.getItem(position))){
-                    image.setImageResource(DsStatic.buttonList44Rev[realPosition]);
+                    image.setImageResource(DsStatic.buttonList44[realPosition]);
                     Integer temp = gridImageAdapter.getItem(position);
                     for(int i = 0; i < selectArrayList.size() ; i++) {
                         Log.i("test123",selectArrayList.get(i) +"=="+ realPosition);
                         if(selectArrayList.get(i) == realPosition){
                             selectArrayList.remove(i);
+                            gridImageAdapter.removeAlreadyImage(realPosition);
                             i--;
                         }
                     }
@@ -189,8 +190,9 @@ public class WriteDiaryActivity extends BaseAppCompatActivity {
                 }
                 else{
                     if(counter < 4 ) {
-                        image.setImageResource(DsStatic.buttonList44[realPosition]);
+                        image.setImageResource(DsStatic.buttonList44Rev[realPosition]);
                         selectArrayList.add(realPosition);
+                        gridImageAdapter.addAlreadyImage(realPosition);
                         counter++;
                     }
                     else{

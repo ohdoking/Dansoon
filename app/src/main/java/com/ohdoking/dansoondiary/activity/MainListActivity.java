@@ -191,9 +191,11 @@ public class MainListActivity extends BaseAppCompatActivity {
 
                 pDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
                 showpDialog();
-                
+
                 Intent intent = new Intent(MainListActivity.this, StaticsActivity.class);
                 startActivity(intent);
+
+                finish();
             }
         });
         moveList.setOnTouchListener(menuTouchListenr);

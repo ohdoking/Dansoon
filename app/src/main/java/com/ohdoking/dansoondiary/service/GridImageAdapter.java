@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,6 +41,8 @@ public class GridImageAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         Integer imageNum = imageArrayList.get(position);
 
+        Log.i("ohdoking12345",position+"");
+
         Holder holder = null;
         if(convertView==null){
             LayoutInflater vi = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -51,12 +54,13 @@ public class GridImageAdapter extends BaseAdapter {
             holder = (Holder)convertView.getTag();
         }
 
-        holder.image.setImageResource(DsStatic.buttonList44Rev[imageNum]);
+        holder.image.setImageResource(DsStatic.buttonList44[imageNum]);
 
         if(alreadyImageArrayList != null){
             for(Integer img:alreadyImageArrayList){
                 if(imageNum.equals(img)){
-                    holder.image.setImageResource(DsStatic.buttonList44[img]);
+                    Log.i("ohdoking123456",img+"!!");
+                    holder.image.setImageResource(DsStatic.buttonList44Rev[img]);
                 }
             }
         }
@@ -106,6 +110,17 @@ public class GridImageAdapter extends BaseAdapter {
      */
     public void addImage(Integer image){
         imageArrayList.add(image);
+    }
+
+    public void removeImage(Integer pos){
+        imageArrayList.remove(pos);
+    }
+    public void addAlreadyImage(Integer image){
+        alreadyImageArrayList.add(image);
+    }
+
+    public void removeAlreadyImage(Integer pos){
+        alreadyImageArrayList.remove(pos);
     }
 
     /**

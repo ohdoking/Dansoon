@@ -120,21 +120,23 @@ public class IconListActivity extends BaseAppCompatActivity {
 
 
                 if(hasDuplicates(gridImageAdapter.getItem(position))){
-                    image.setImageResource(DsStatic.buttonList44Rev[RealPosition]);
+                    image.setImageResource(DsStatic.buttonList44[RealPosition]);
                     Integer temp = gridImageAdapter.getItem(position);
 
                     for(int i = 0; i < selectArrayList.size() ; i++) {
                         Log.i("test123",selectArrayList.get(i) +"=="+ temp);
                         if(selectArrayList.get(i) == temp){
                             selectArrayList.remove(i);
+                            gridImageAdapter.removeAlreadyImage(RealPosition);
                             i--;
                         }
                     }
                     counter--;
                 }
                 else{
-                    image.setImageResource(DsStatic.buttonList44[RealPosition]);
+                    image.setImageResource(DsStatic.buttonList44Rev[RealPosition]);
                     selectArrayList.add(RealPosition);
+                    gridImageAdapter.addAlreadyImage(RealPosition);
                     counter++;
                 }
             }

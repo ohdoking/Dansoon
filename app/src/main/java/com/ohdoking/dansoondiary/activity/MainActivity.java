@@ -11,7 +11,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.ohdoking.dansoondiary.R;
 import com.ohdoking.dansoondiary.dao.DiaryDao;
@@ -153,8 +152,8 @@ public class MainActivity  extends BaseAppCompatActivity {
 
 //            i.setImageResource(R.mipmap.ic_launcher);
 
-            Toast.makeText(getApplicationContext(), String.valueOf(date),
-                    Toast.LENGTH_SHORT).show();
+            /*Toast.makeText(getApplicationContext(), String.valueOf(date),
+                    Toast.LENGTH_SHORT).show();*/
         }
 
         @Override
