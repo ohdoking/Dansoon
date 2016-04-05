@@ -122,6 +122,7 @@ public class SettingActivity extends BaseAppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
                     saveUsingPassword(true);
+
                 }
                 else{
                     saveUsingPassword(false);
@@ -217,6 +218,9 @@ public class SettingActivity extends BaseAppCompatActivity {
                     if(!dataSwitch.isChecked()){
                         saveUsingPassword(true);
                         dataSwitch.setChecked(true);
+                        /*Intent intent = new Intent(SettingActivity.this, PasswordActivity.class);
+                        intent.putExtra(DsStatic.PASSWORDSATE,DsStatic.SETPASSWORD);
+                        startActivity(intent);*/
                     }
                     else{
                         saveUsingPassword(false);

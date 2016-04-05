@@ -36,14 +36,14 @@ public class SplashActivity extends Activity {
                     /**
                      * 첫 방문시 패스워드 세팅, 그 이후에는 패스워드 확인만
                      */
-                    if(getVisitState()){
+                    /*if(getVisitState()){
                         intent.putExtra(DsStatic.PASSWORDSATE,DsStatic.SETPASSWORD);
 //                        setVisitState(false);
                         saveUsingPassword(false);
                     }
-                    else{
+                    else{*/
                         intent.putExtra(DsStatic.PASSWORDSATE,DsStatic.CONFIRMPASSWORD);
-                    }
+                    //}
 
                 }
                 else{
@@ -60,7 +60,7 @@ public class SplashActivity extends Activity {
     // 값 불러오기
     private boolean getUsingPassword(){
         SharedPreferences pref = getSharedPreferences(DsStatic.SHARDPREFERENCETABLE, MODE_PRIVATE);
-        return pref.getBoolean(DsStatic.USEPASSWORD,true);
+        return pref.getBoolean(DsStatic.USEPASSWORD,false);
     }
 
     private void saveUsingPassword(boolean usepassword){
