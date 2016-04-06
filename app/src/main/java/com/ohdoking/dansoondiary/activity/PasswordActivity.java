@@ -40,9 +40,11 @@ public class PasswordActivity extends BaseAppCompatActivity {
 
 package com.ohdoking.dansoondiary.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
@@ -78,10 +80,7 @@ public class PasswordActivity extends BaseAppCompatActivity {
 
     ImageView mPass1,  mPass2,  mPass3,  mPass4;
 
-
-
     @Override
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_password);
@@ -205,8 +204,10 @@ public class PasswordActivity extends BaseAppCompatActivity {
                     if(state == DsStatic.CONFIRMPASSWORD){
                         Integer appPass = getPassword();
                         Log.i("test1234",appPass+"");
-                        if(count < 3){
+                        if(resultPassword.length() < 4){
                             Toast.makeText(getApplicationContext(),"비밀번호를 4자리 입력해주세요.",Toast.LENGTH_SHORT).show();
+                            Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                            vibe.vibrate(500);
                         }
                         else if(appPass.equals(Integer.valueOf(resultPassword)))
                         {
@@ -220,7 +221,9 @@ public class PasswordActivity extends BaseAppCompatActivity {
                         else
                         {
                             txt.setText("비밀번호가 틀렸습니다");
-                            PasswordActivity.this.finish();
+                            Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                            vibe.vibrate(500);
+//                            PasswordActivity.this.finish();
                         }
                         break;
 
@@ -237,8 +240,10 @@ public class PasswordActivity extends BaseAppCompatActivity {
                             mPass4.setImageResource(R.drawable.pw_blank);
 
                         }
-                        else if(count < 3){
+                        else if(resultPassword.length() < 4){
                             Toast.makeText(getApplicationContext(),"비밀번호를 4자리 입력해주세요.",Toast.LENGTH_SHORT).show();
+                            Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                            vibe.vibrate(500);
                         }
                         else if(beforeResultPassword.equals(resultPassword)){
                             setPassword(Integer.valueOf(resultPassword));
@@ -247,6 +252,8 @@ public class PasswordActivity extends BaseAppCompatActivity {
                         }
                         else{
                             txt.setText("비밀번호가 일치하지 않습니다."+System.getProperty("line.separator")+"처음부터 다시 시도해주세요");
+                            Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                            vibe.vibrate(500);
                             resultPassword = "";
                             mPass1.setImageResource(R.drawable.pw_blank);
                             mPass2.setImageResource(R.drawable.pw_blank);

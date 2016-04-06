@@ -370,6 +370,10 @@ public class DsStatic {
     public static final String USEPASSWORD = "usepassword";
     public static final String PASSWORDSATE = "password-activity-state";
 
+    public static final String ICONLIST = "iconlist";
+    public static final String ICONFIRSTTIME = "iconlist-first-time";
+    public static final String ICONNORMALTIME = "iconlist-normal-time";
+
     public static final String ICONTABLE = "icon";
     public static final String FAVORITEICON = "favorite-icon";
 
