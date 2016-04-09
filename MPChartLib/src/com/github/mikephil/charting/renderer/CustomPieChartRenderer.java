@@ -14,6 +14,7 @@ import android.os.Build;
 import android.text.Layout;
 import android.text.StaticLayout;
 import android.text.TextPaint;
+import android.util.Log;
 
 import com.github.mikephil.charting.animation.ChartAnimator;
 import com.github.mikephil.charting.charts.CustomPieChart;
@@ -437,6 +438,8 @@ public class CustomPieChartRenderer extends CustomDataRenderer {
 
                 boolean drawYVals = dataSet.isDrawValuesEnabled();
 
+
+
                 // draw everything, depending on settings
                 if (drawXVals && drawYVals) {
 
@@ -451,7 +454,10 @@ public class CustomPieChartRenderer extends CustomDataRenderer {
 
 
                         mValuePaint.setColor(dataSet.getColor(j));
-                        c.drawBitmap(data.getXVals().get(j), (float)x2-102, y2-90 + lineHeight - 60,
+                        Log.i("ohdoking000",c.getWidth()+" : "+c.getHeight());
+                        /*c.drawBitmap(data.getXVals().get(j), (float)x2-102, y2-90 + lineHeight - 60,
+                                mValuePaint);*/
+                        c.drawBitmap(data.getXVals().get(j), (float)x2-(c.getWidth()/11f), y2-(c.getHeight()/17f) + lineHeight - 60,
                                 mValuePaint);
 
                     }

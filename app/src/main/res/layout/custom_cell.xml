@@ -12,7 +12,7 @@
         android:id="@+id/iv1"
         android:adjustViewBounds="true"
         android:layout_width="wrap_content"
-        android:layout_height="60dp" />
+        android:layout_height="40dp" />
     <TextView
         android:id="@+id/tv1"
         android:textAlignment="center"

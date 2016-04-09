@@ -16,6 +16,8 @@
     <string name="static_icon_count">아이콘 사용 횟수</string>
     <string name="title_main_calendar">캘린더</string>
     <string name="title_fix_icon">아이콘 편집 목록</string>
+    <string name="title_fix_icon_first">자주 쓰는 아이콘 선택</string>
+    <string name="title_fix_icon_first_toast">자주 쓰는 아이콘을 선택해주세요.</string>
     <string name="title_main_timeline">타임라인</string>
     <string name="title_write">작성</string>
     <string name="title_static">통계</string>

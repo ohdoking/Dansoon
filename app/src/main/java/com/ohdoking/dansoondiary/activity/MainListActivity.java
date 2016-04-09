@@ -152,6 +152,7 @@ public class MainListActivity extends BaseAppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(MainListActivity.this,WriteDiaryActivity.class);
+//                i.putExtra(DsStatic.STARTACTIVITY,DsStatic.MODIDIARYACTIVITY);
                 startActivityForResult(i,1);
             }
         });
@@ -195,7 +196,7 @@ public class MainListActivity extends BaseAppCompatActivity {
                 Intent intent = new Intent(MainListActivity.this, StaticsActivity.class);
                 startActivity(intent);
 
-                finish();
+//                finish();
             }
         });
         moveList.setOnTouchListener(menuTouchListenr);

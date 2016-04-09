@@ -162,18 +162,21 @@ public class WriteDiaryActivity extends BaseAppCompatActivity {
                 ImageView image = (ImageView) l.getChildAt(0);//.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
 //                LinearLayout l= (LinearLayout)parent.getChildAt(0);
 //                Image image = (ImageView)l.getChildAt(0);
-                Log.i("ohdoking1234",gridImageAdapter.getCount() +"=="+ lastIconPostion);
-
                 if(!intent2.hasExtra(DsStatic.STARTACTIVITY)) {
+
                     if (gridImageAdapter.getCount() == lastIconPostion) {
                         Intent intent = new Intent(WriteDiaryActivity.this, IconListActivity.class);
+                        intent.putExtra(DsStatic.ICONLIST,DsStatic.ICONNORMALTIME);
                         startActivity(intent);
                         finish();
                     }
                 }
+
+
                 int realPosition = favoriteIconArrayList.get(position);
 
-//                Log.i("ohdoking7",gridImageAdapter.getCount()+" : "+gridImageAdapter.getItem(position));
+//                Log.i("ohdoking7",gridImageAdapte
+// r.getCount()+" : "+gridImageAdapter.getItem(position));
 
                 if(hasDuplicates(gridImageAdapter.getItem(position))){
                     image.setImageResource(DsStatic.buttonList44[realPosition]);
@@ -199,10 +202,11 @@ public class WriteDiaryActivity extends BaseAppCompatActivity {
                         Toast.makeText(getApplicationContext(),"4개 이상 추가 하실수 없습니다.",Toast.LENGTH_SHORT).show();
                     }
                 }
-
-
-
             }
+
+
+
+
         });
 
         backList.setOnClickListener(new View.OnClickListener() {

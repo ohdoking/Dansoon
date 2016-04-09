@@ -30,6 +30,7 @@ public class GridImageAdapter extends BaseAdapter {
     public GridImageAdapter(Context context) {
         this.context = context;
         imageArrayList = new ArrayList<Integer>();
+        alreadyImageArrayList = new ArrayList<Integer>();
     }
 
     public GridImageAdapter(Context context, ArrayList<Integer> alreadyImageArrayList) {

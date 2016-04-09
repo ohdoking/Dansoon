@@ -36,19 +36,20 @@ public class SplashActivity extends Activity {
                     /**
                      * 첫 방문시 패스워드 세팅, 그 이후에는 패스워드 확인만
                      */
+                    intent.putExtra(DsStatic.PASSWORDSATE,DsStatic.CONFIRMPASSWORD);
+
+                }
+                else{
                     if(getVisitState()){
                         intent = new Intent(SplashActivity.this,IconListActivity.class);
-                        intent.putExtra(DsStatic.PASSWORDSATE,DsStatic.CONFIRMPASSWORD);
+                        intent.putExtra(DsStatic.ICONLIST,DsStatic.ICONFIRSTTIME);
 //                        setVisitState(false);
 //                        saveUsingPassword(false);
                     }
                     else{
-                        intent.putExtra(DsStatic.PASSWORDSATE,DsStatic.CONFIRMPASSWORD);
-                    }
 
-                }
-                else{
-                    intent = new Intent(SplashActivity.this,MainListActivity.class);
+                        intent = new Intent(SplashActivity.this,MainListActivity.class);
+                    }
                 }
                 startActivity(intent);
                 finish();

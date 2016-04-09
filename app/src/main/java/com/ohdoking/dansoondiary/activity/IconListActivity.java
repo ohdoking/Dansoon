@@ -14,6 +14,8 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -35,8 +37,12 @@ public class IconListActivity extends BaseAppCompatActivity {
     Intent intent;
     ImageView backList;
     ImageView saveDiary;
+    TextView iconListTitle;
+
+    Intent intent2;
 
     Integer counter=0;
+    String where;
 
     ArrayList<Integer> alreadySelectedArrayList;
 
@@ -47,12 +53,16 @@ public class IconListActivity extends BaseAppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        intent2 = getIntent();
 
         selectArrayList = new ArrayList<Integer>();
 
         alreadySelectedArrayList = getFavoritesIcon();
         if(alreadySelectedArrayList != null){
             selectArrayList.addAll(alreadySelectedArrayList);
+        }
+        else{
+            alreadySelectedArrayList = new ArrayList<Integer>();
         }
         gridImageAdapter = new GridImageAdapter(getApplicationContext(),alreadySelectedArrayList);
 
@@ -61,6 +71,19 @@ public class IconListActivity extends BaseAppCompatActivity {
 
         initId();
         setGridImageAdapter();
+
+        where = intent2.getStringExtra(DsStatic.ICONLIST);
+
+
+
+        if(where.equals(DsStatic.ICONFIRSTTIME)){
+            iconListTitle.setText(getResources().getString(R.string.title_fix_icon_first));
+            setVisitState(false);
+            Toast.makeText(getApplicationContext(),getResources().getString(R.string.title_fix_icon_first_toast),Toast.LENGTH_SHORT).show();
+        }
+        else if(where.equals(DsStatic.ICONNORMALTIME)){
+            iconListTitle.setText(getResources().getString(R.string.title_fix_icon));
+        }
 
         clickEvent();
     }
@@ -88,6 +111,7 @@ public class IconListActivity extends BaseAppCompatActivity {
         backList = (ImageView) findViewById(R.id.backWrite);
         saveDiary = (ImageView) findViewById(R.id.saveIcon);
         gridView = (GridView) findViewById(R.id.gridView2);
+        iconListTitle = (TextView) findViewById(R.id.iconListTitle);
     }
 
     /**
@@ -157,7 +181,9 @@ public class IconListActivity extends BaseAppCompatActivity {
 
                 saveFavoritesIcon(selectArrayList);
                 Intent intent;
-                if(getVisitState()){
+
+
+                if(where.equals(DsStatic.ICONFIRSTTIME)){
                     setVisitState(false);
                     intent = new Intent(IconListActivity.this, MainListActivity.class);
                 }
@@ -212,6 +238,14 @@ public class IconListActivity extends BaseAppCompatActivity {
         Gson gson = new Gson();
         String jsonFavorites = gson.toJson(favorites);
         editor.putString(DsStatic.FAVORITEICON, jsonFavorites);
+        editor.commit();
+    }
+
+    // 값 불러오기
+    public void setVisitState(boolean visit){
+        SharedPreferences pref = getSharedPreferences(DsStatic.USERINFO, MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putBoolean(DsStatic.VISITSTATE, visit);
         editor.commit();
     }
 

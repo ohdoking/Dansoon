@@ -381,6 +381,7 @@ public class DsStatic {
     public static final int CONFIRMPASSWORD = 2;
 
     public static final String STARTACTIVITY = "where";
+    public static final String NORMALDIARYACTIVITY = "normal";
     public static final String MODIDIARYACTIVITY = "modi";
 
     public static final int NOCHANGE = 0;
