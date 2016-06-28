@@ -41,8 +41,9 @@ public class SplashActivity extends Activity {
                 }
                 else{
                     if(getVisitState()){
-                        intent = new Intent(SplashActivity.this,IconListActivity.class);
-                        intent.putExtra(DsStatic.ICONLIST,DsStatic.ICONFIRSTTIME);
+//                        intent = new Intent(SplashActivity.this,IconListActivity.class);
+                        intent = new Intent(SplashActivity.this,TutorialActivity.class);
+//                        intent.putExtra(DsStatic.ICONLIST,DsStatic.ICONFIRSTTIME);
 //                        setVisitState(false);
 //                        saveUsingPassword(false);
                     }
