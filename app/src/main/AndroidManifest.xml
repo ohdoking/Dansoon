@@ -2,9 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ohdoking.dansoondiary">
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:name=".DansoonApplication"
@@ -54,8 +54,12 @@
             android:name=".activity.ModiDiaryActivity"
             android:label="@string/title_activity_modi_diary"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activity.PasswordActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".activity.PasswordActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.TutorialActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
