@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layoutTutorial5"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/tutorial05"
+    >
+    <ImageButton
+        android:id="@+id/finishTutorial"
+        android:background="@drawable/button_click"
+        android:layout_width="186dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="390dp"
+        android:layout_marginBottom="211.5dp"
+        android:layout_marginLeft="87dp"
+        android:layout_marginRight="87dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true">
+    </ImageButton>
+
+
+</FrameLayout>

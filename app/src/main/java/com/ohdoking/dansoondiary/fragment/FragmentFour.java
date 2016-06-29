@@ -13,26 +13,25 @@ import android.widget.LinearLayout;
 
 import com.ohdoking.dansoondiary.R;
 
-public class FragmentThree extends Fragment {
+public class FragmentFour extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // TODO Auto-generated method stub
-        View view = inflater.inflate(R.layout.fragment_three_layout, container, false);
+        View view = inflater.inflate(R.layout.fragment_four_layout, container, false);
 
 //        BitmapFactory.Options options = new BitmapFactory.Options();
 //        options.inSampleSize = 4;
 //        Bitmap src = BitmapFactory.decodeResource(getResources(), R.drawable.tutorial_background, options);
 //
-//        LinearLayout l = (LinearLayout) view.findViewById(R.id.layoutTutorial3);
+//        LinearLayout l = (LinearLayout) view.findViewById(R.id.layoutTutorial4);
 //        BitmapDrawable ob = new BitmapDrawable(getResources(), src);
 //        l.setBackground(ob);
 
 
-//        Bitmap src2 = BitmapFactory.decodeResource(getResources(), R.drawable.tutorial03, options);
+//        Bitmap src2 = BitmapFactory.decodeResource(getResources(), R.drawable.tutorial04, options);
 //        BitmapDrawable ob2 = new BitmapDrawable(getResources(), src2);
-//        ImageView imageView = (ImageView) view.findViewById(R.id.tutorialImg3);
-//        imageView.setBackgroundResource(R.drawable.tutorial03);
+//        ImageView imageView = (ImageView) view.findViewById(R.id.tutorialImg4);
+//        imageView.setBackgroundResource(R.drawable.tutorial04);
 
         return view;
     }
