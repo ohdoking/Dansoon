@@ -172,8 +172,14 @@ public class WriteDiaryActivity extends BaseAppCompatActivity {
                     }
                 }
 
+                int realPosition;
+                try{
 
-                int realPosition = favoriteIconArrayList.get(position);
+                    realPosition = favoriteIconArrayList.get(position);
+                }
+                catch (Exception e){
+                    realPosition = 0;
+                }
 
 //                Log.i("ohdoking7",gridImageAdapte
 // r.getCount()+" : "+gridImageAdapter.getItem(position));

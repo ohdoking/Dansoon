@@ -271,6 +271,10 @@ public class DetailDiaryActivity extends BaseAppCompatActivity {
         ab.setPositiveButton("확인", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface arg0, int arg1) {
+                Log.i("ohdoking",resultKey+"");
+                if(resultKey == 9999){
+                    resultKey = diary.getId();
+                }
                 diaryDao.deleteDiary(resultKey);
                 setResult(1, i);
                 finish();
