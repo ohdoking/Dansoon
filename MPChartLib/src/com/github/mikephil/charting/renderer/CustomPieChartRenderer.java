@@ -457,7 +457,8 @@ public class CustomPieChartRenderer extends CustomDataRenderer {
                         Log.i("ohdoking000",c.getWidth()+" : "+c.getHeight());
                         /*c.drawBitmap(data.getXVals().get(j), (float)x2-102, y2-90 + lineHeight - 60,
                                 mValuePaint);*/
-                        c.drawBitmap(data.getXVals().get(j), (float)x2-(c.getWidth()/11f), y2-(c.getHeight()/17f) + lineHeight - 60,
+                        //11 17
+                        c.drawBitmap(data.getXVals().get(j), (float)x2-(c.getWidth()/23f), y2-(c.getHeight()/40f) + lineHeight - 60,
                                 mValuePaint);
 
                     }

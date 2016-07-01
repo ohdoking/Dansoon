@@ -57,7 +57,7 @@
                     android:layout_marginTop="18.5dp"
                     android:text="백업 설정"
                     android:textColor="#7a7a7a"
-                    android:textSize="17sp" />
+                    android:textSize="16sp" />
             </RelativeLayout>
 
             <View
@@ -79,7 +79,7 @@
                     android:layout_marginTop="18.5dp"
                     android:text="잠금 설정"
                     android:textColor="#7a7a7a"
-                    android:textSize="17sp" />
+                    android:textSize="16sp" />
 
                 <ToggleButton
                     android:id="@+id/dataSwitch"
@@ -127,7 +127,7 @@
                     android:layout_marginTop="18.5dp"
                     android:text="비밀번호 변경"
                     android:textColor="#7a7a7a"
-                    android:textSize="17sp" />
+                    android:textSize="16sp" />
             </RelativeLayout>
             <View
                 android:layout_width="fill_parent"
@@ -159,7 +159,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginRight="23dp"
                     android:background="#00000000"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     android:textColor="#7a7a7a"
                     android:text="v 1.10"/>
 
@@ -173,7 +173,7 @@
                     android:layout_marginTop="18.5dp"
                     android:text="버전"
                     android:textColor="#7a7a7a"
-                    android:textSize="17sp" />
+                    android:textSize="16sp" />
             </RelativeLayout>
 
             <View
@@ -208,7 +208,7 @@
                     android:layout_marginTop="18.5dp"
                     android:text="단순 응원하기"
                     android:textColor="#7a7a7a"
-                    android:textSize="17sp" />
+                    android:textSize="16sp" />
             </RelativeLayout>
 
             <View
@@ -243,7 +243,7 @@
                     android:layout_marginTop="18.5dp"
                     android:text="단순 추천하기"
                     android:textColor="#7a7a7a"
-                    android:textSize="17sp" />
+                    android:textSize="16sp" />
             </RelativeLayout>
 
             <View
@@ -278,7 +278,7 @@
                     android:layout_marginTop="18.5dp"
                     android:text="문의하기"
                     android:textColor="#7a7a7a"
-                    android:textSize="17sp" />
+                    android:textSize="16sp" />
             </RelativeLayout>
 
             <View

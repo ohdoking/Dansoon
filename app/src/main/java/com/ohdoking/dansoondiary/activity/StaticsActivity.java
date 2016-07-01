@@ -137,7 +137,7 @@ public class StaticsActivity extends BaseAppCompatActivity implements OnChartVal
         mChart.setCenterText(generateCenterSpannableText());
 
        // mChart.setCenterText(tempdate.getYear().toString()+"년\n"+tempdate.getMonth().toString()+"월");
-        mChart.setCenterTextSize(30f);
+        mChart.setCenterTextSize(27f);
         mChart.setDescription("");
         /*mChart.setDescription(tempdate.getMonth().toString()+"월");
         mChart.setDescriptionTextSize(15f);*/
@@ -279,7 +279,7 @@ public class StaticsActivity extends BaseAppCompatActivity implements OnChartVal
             yVals1.add(new BarEntry(barCharList.get(i).getCount(), i));
             colors.add(DsStatic.buttonColor[barCharList.get(i).getIcon()]);
             Resources res = getResources();
-            BitmapDrawable bd = (BitmapDrawable)res.getDrawable(DsStatic.buttonList69[barCharList.get(i).getIcon()]);
+            BitmapDrawable bd = (BitmapDrawable)res.getDrawable(DsStatic.buttonList29[barCharList.get(i).getIcon()]);
             Bitmap bit = bd.getBitmap();
             xVals.add(bit);
         }
@@ -360,7 +360,7 @@ public class StaticsActivity extends BaseAppCompatActivity implements OnChartVal
             yVals1.add(new Entry(iconList.get(i).getCount(), i));
             colors.add(DsStatic.buttonColor[iconList.get(i).getIcon()]);
             Resources res = getResources();
-            BitmapDrawable bd = (BitmapDrawable)res.getDrawable(DsStatic.buttonList69[iconList.get(i).getIcon()]);
+            BitmapDrawable bd = (BitmapDrawable)res.getDrawable(DsStatic.buttonList29[iconList.get(i).getIcon()]);
             Bitmap bit = bd.getBitmap();
             xVals.add(bit);
         }

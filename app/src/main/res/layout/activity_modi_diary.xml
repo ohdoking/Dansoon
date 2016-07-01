@@ -38,8 +38,8 @@
 
                 <TextView
                     android:layout_width="0dp"
-                    android:layout_weight="0.8  "
-                    android:textSize="21sp"
+                    android:layout_weight="0.7"
+                    android:textSize="18sp"
                     android:textStyle="bold"
                     android:textAlignment="textStart"
                     android:gravity="center_vertical"
@@ -57,7 +57,7 @@
                     android:layout_height="25dp"
                     android:paddingTop="1dp"
                     android:paddingEnd="15dp"
-                    android:textSize="21sp"
+                    android:textSize="18sp"
                     android:text="@string/complete"/>
 
             </LinearLayout>
